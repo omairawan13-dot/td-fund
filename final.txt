@@ -1,0 +1,27 @@
+user profile 
+
+PLZ/Ort trennen - done
+
+fehler melden:  erst bei fortfahren bei admins anzeiogen   --!
+
+news soll fixiert werden können vom admin  - done
+
+korrektur um - wird mit + - anzeigt (fehler melden) --!
+
+REGISTIERUNG NACH FREISCHALTUNG --!
+
+
+
+cases : alle sollen belastet werden auch inaktive  --done
+
+members : nur inaktive -> möglichkeit wieder aktiv zu setzten & filter nur neue  --done
+
+logo --done
+
+member import
+
+
+ mail:spam
+
+
+ admin soll passwörter ändern in members --done
