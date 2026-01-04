@@ -16,7 +16,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/_global-error",
       "dataRoute": "/_global-error.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -42,7 +41,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/_not-found",
       "dataRoute": "/_not-found.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -67,7 +65,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/admin/cases",
       "dataRoute": "/dashboard/admin/cases.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -92,7 +89,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/admin/members",
       "dataRoute": "/dashboard/admin/members.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -117,7 +113,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/admin/news",
       "dataRoute": "/dashboard/admin/news.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -142,7 +137,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/admin/verwaltung",
       "dataRoute": "/dashboard/admin/verwaltung.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -167,7 +161,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/news",
       "dataRoute": "/dashboard/news.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -192,7 +185,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard",
       "dataRoute": "/dashboard.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -217,7 +209,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/dashboard/profile",
       "dataRoute": "/dashboard/profile.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -242,7 +233,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/login",
       "dataRoute": "/login.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -267,7 +257,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
-      "prefetchDataRoute": null,
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -281,8 +270,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "44ab49fe78f08df0d4410a4fc283a48d",
-    "previewModeSigningKey": "bb9b83db0debef25b47abac6e2a9ec500a92b58117ecb7a80d72f379b4c640de",
-    "previewModeEncryptionKey": "6c45dd7586a55d715d1b3934e1c23a547e434ed4ef0626492457aecd2e8f8aee"
+    "previewModeId": "bf1694c7806da0844dedb3090ea8c8ea",
+    "previewModeSigningKey": "064c12153c65d4acad27ee24fac1f491442553a6949decef1659be7c1e2a5e2f",
+    "previewModeEncryptionKey": "420eaf44bfc622de02f4e47c740b45bbb12dea9170eb3d31f3cdcfa7a47f1d72"
   }
 }
