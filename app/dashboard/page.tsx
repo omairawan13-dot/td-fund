@@ -8,6 +8,7 @@ import { ArrowUpCircle, ArrowDownCircle, Loader2, Bell, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import QRCode from "react-qr-code"
 import { useMemo, useState, useEffect } from "react"
+import { getDefaultSEPADetails, generateEPCQRCodeData } from "@/lib/payment-utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -59,10 +60,8 @@ export default function HomePage() {
 
   const unreadCount = notifications.filter(n => !n.read).length
 
-  const sepaDetails = {
-    name: "Vereinskasse Demo e.V.",
-    iban: "DE89370400440532013000",
-  }
+  // Get SEPA details from environment variables
+  const sepaDetails = useMemo(() => getDefaultSEPADetails(), [])
 
   const amountToTransfer = useMemo(() => {
     if (!user) return 0
@@ -73,22 +72,12 @@ export default function HomePage() {
   const epcQrData = useMemo(() => {
     if (!user || amountToTransfer === 0) return null
 
-    const reference = `Mitgliedsnummer: ${user.mitgliedsnummer}`
-    return [
-      "BCD",
-      "002",
-      "1",
-      "SCT",
-      "",
-      sepaDetails.name,
-      sepaDetails.iban,
-      `EUR${amountToTransfer.toFixed(2)}`,
-      "",
-      reference,
-      "",
-      "",
-    ].join("\n")
-  }, [user, amountToTransfer])
+    return generateEPCQRCodeData({
+      amount: amountToTransfer,
+      memberId: user.mitgliedsnummer,
+      sepaDetails,
+    })
+  }, [user, amountToTransfer, sepaDetails])
 
   const handleErrorReport = async () => {
     if (!user) return

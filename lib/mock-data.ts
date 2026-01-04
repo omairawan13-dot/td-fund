@@ -324,3 +324,37 @@ export const removePendingManualReview = (id: string) => {
 export const updatePendingManualReview = (id: string, updates: Partial<PendingManualReview>) => {
   pendingManualReviews = pendingManualReviews.map((r) => (r.id === id ? { ...r, ...updates } : r))
 }
+
+// Bulk Member Import interfaces
+export interface BulkMemberImport {
+  id: string
+  s_number?: string
+  no?: string
+  name: string
+  address?: string
+  postal_code?: string
+  city?: string
+  mobile_phone?: string
+  email?: string
+  membership_date?: string
+  photo_url?: string
+  status?: string
+  gender?: string
+  created_at: string
+  created_by?: string
+}
+
+export interface BulkMemberImportInput {
+  s_number?: string
+  no?: string
+  name: string
+  address?: string
+  postal_code?: string
+  city?: string
+  mobile_phone?: string
+  email?: string
+  membership_date?: string
+  photo_url?: string
+  status?: string
+  gender?: string
+}

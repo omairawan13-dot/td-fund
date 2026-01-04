@@ -3,98 +3,41 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { type Case, type User, type Transaction } from "@/lib/mock-data"
-import { createCase, getCases, getTransactions, getUsers } from "@/lib/api"
+import { type Case } from "@/lib/mock-data"
+import { createCase, getCases } from "@/lib/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Plus, CheckCircle2, XCircle, Loader2 } from "lucide-react"
+import { Plus, Loader2, Euro } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-
-interface UserPaymentStatus {
-  userId: string
-  userName: string
-  paid: boolean
-}
 
 export default function AdminCasesPage() {
   const [cases, setCases] = useState<Case[]>([])
   const [loading, setLoading] = useState(true)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [selectedCase, setSelectedCase] = useState<Case | null>(null)
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     fee: "10",
   })
-  const [paymentStatuses, setPaymentStatuses] = useState<Record<string, UserPaymentStatus[]>>({})
-  const [users, setUsers] = useState<User[]>([])
 
-  // Load cases and users on mount
+  // Load cases on mount
   useEffect(() => {
     loadData()
   }, [])
 
   const loadData = async () => {
     setLoading(true)
-    const [fetchedCases, fetchedUsers] = await Promise.all([
-      getCases(),
-      getUsers()
-    ])
+    const fetchedCases = await getCases()
     setCases(fetchedCases)
-    setUsers(fetchedUsers)
     setLoading(false)
   }
 
   const handleCreate = () => {
     setFormData({ title: "", description: "", fee: "10" })
     setIsDialogOpen(true)
-  }
-
-  const handleViewCase = async (caseItem: Case) => {
-    setSelectedCase(caseItem)
-
-    // Calculate payment status based on transactions
-    // Since we don't fetch all transactions for performance, we might need a specific query
-    // For now, we'll fetch all transactions (optimization for later: fetch by case_id)
-    const transactions = await getTransactions()
-    
-    // Filter transactions for this case
-    const caseTransactions = transactions.filter(t => t.caseId === caseItem.id)
-    
-    // Determine status for each user
-    // A user has "paid" if they have a DEPOSIT transaction that covers the fee?
-    // OR: The "charge" transaction exists (which we created automatically).
-    // The requirement says "charged the amount". 
-    // If we want to show if they *paid* it back (positive balance or specific payment), that's different.
-    // Assuming "Paid" means "Has sufficient balance" or "Has settled the debt".
-    // But the current UI shows "Paid/Unpaid".
-    // For now, let's just show the list of users who were charged.
-    // If we want to track payments *against* a case, we need logic to match deposits to cases.
-    // Simplification: Everyone is "Unpaid" initially until they make a deposit?
-    // Let's assume the mock logic: "paid" state was random or toggleable.
-    // In a real system, "Paid" usually means `balance >= 0` or specific invoice settlement.
-    
-    // Let's list all users and show if they were charged (they should be).
-    const statuses = users.map(user => {
-        const charged = caseTransactions.some(t => t.userId === user.id && t.type === 'CASE_FEE')
-        // In the mock, it was manual toggle.
-        // Let's keep it simple: Show everyone, and "Paid" if their balance is non-negative?
-        // Or just show that they were charged.
-        return {
-            userId: user.id,
-            userName: user.name,
-            paid: charged // Temporarily showing "Charged" status as "Paid" checkmark to indicate inclusion
-        }
-    })
-
-    setPaymentStatuses({
-        ...paymentStatuses,
-        [caseItem.id]: statuses
-    })
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -138,35 +81,31 @@ export default function AdminCasesPage() {
         <p className="text-muted-foreground text-center p-8">Keine Fälle vorhanden</p>
       ) : (
       <div className="space-y-4">
-        {cases.map((caseItem) => {
-          // Calculate summary if needed, for now just static or based on user count
-          const totalCount = users.length
-          const paidCount = totalCount // Since we charge everyone
-
-          return (
-            <Card key={caseItem.id}>
-              <CardHeader>
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1">
-                    <CardTitle className="text-lg">{caseItem.title}</CardTitle>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Erstellt: {new Date(caseItem.createdAt).toLocaleDateString("de-DE")} • Gebühr: {caseItem.fee}€
-                    </p>
-                  </div>
-                  <Badge variant="outline">
-                    {totalCount} Mitglieder belastet
-                  </Badge>
+        {cases.map((caseItem) => (
+          <Card key={caseItem.id}>
+            <CardHeader>
+              <CardTitle className="text-lg">{caseItem.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {caseItem.description && (
+                <p className="text-sm text-muted-foreground leading-relaxed">{caseItem.description}</p>
+              )}
+              <div className="flex items-center justify-between pt-2 border-t">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Euro className="h-4 w-4" />
+                  <span className="font-semibold text-foreground">{caseItem.fee.toFixed(2)}€</span>
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-muted-foreground">{caseItem.description}</p>
-                <Button onClick={() => handleViewCase(caseItem)} variant="outline" className="w-full h-11">
-                  Details anzeigen
-                </Button>
-              </CardContent>
-            </Card>
-          )
-        })}
+                <p className="text-xs text-muted-foreground">
+                  {new Date(caseItem.createdAt).toLocaleDateString("de-DE", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric"
+                  })}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
       </div>
       )}
 
@@ -226,27 +165,6 @@ export default function AdminCasesPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Payment Status Dialog */}
-      <Dialog open={!!selectedCase} onOpenChange={() => setSelectedCase(null)}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>{selectedCase?.title}</DialogTitle>
-            <DialogDescription>Belastete Mitglieder</DialogDescription>
-          </DialogHeader>
-          <div className="space-y-2 max-h-96 overflow-y-auto">
-            {selectedCase &&
-              users.map((user) => (
-                <div key={user.id} className="flex items-center justify-between p-3 bg-muted rounded-lg">
-                  <div>
-                    <p className="font-medium text-sm">{user.name}</p>
-                    <p className="text-xs text-muted-foreground">-{selectedCase.fee}€ (Gebühr)</p>
-                  </div>
-                  <Badge variant="outline">Belastet</Badge>
-                </div>
-              ))}
-          </div>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }

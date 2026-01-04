@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/repos_tdfund final_td-fund_edge-wrapper_6393b988.js",
+        "server/edge/chunks/[root-of-the-server]__175f2460._.js",
+        "server/edge/chunks/turbopack-repos_tdfund final_td-fund_edge-wrapper_db075c8f.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next\\/static|_next\\/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*))(\\\\.json)?[\\/#\\?]?$",
+          "originalSource": "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "eI1oZz97p3g6zegBzamBC",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "yS14mXowLzgs4B9TS/woJ86EFQFspp8KTNmZ+csqlS4=",
+        "__NEXT_PREVIEW_MODE_ID": "44ab49fe78f08df0d4410a4fc283a48d",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "6c45dd7586a55d715d1b3934e1c23a547e434ed4ef0626492457aecd2e8f8aee",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "bb9b83db0debef25b47abac6e2a9ec500a92b58117ecb7a80d72f379b4c640de"
+      }
+    }
+  },
+  "sortedMiddleware": [
+    "/"
+  ],
+  "functions": {}
+}

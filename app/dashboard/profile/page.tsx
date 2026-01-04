@@ -23,6 +23,7 @@ export default function ProfilePage() {
     title: "",
     email: "",
     phone: "",
+    address: "",
     postalCode: "",
     city: "",
   })
@@ -39,6 +40,7 @@ export default function ProfilePage() {
         title: user.title || "",
         email: user.email,
         phone: user.phone,
+        address: user.address || "",
         postalCode: user.postalCode || "",
         city: user.city || "",
       })
@@ -66,6 +68,7 @@ export default function ProfilePage() {
         title: user.title || "",
         email: user.email,
         phone: user.phone,
+        address: user.address || "",
         postalCode: user.postalCode || "",
         city: user.city || "",
       })
@@ -131,6 +134,10 @@ export default function ProfilePage() {
       newErrors.phone = "Telefon ist erforderlich"
     }
 
+    if (!formData.address.trim()) {
+      newErrors.address = "Adresse ist erforderlich"
+    }
+
     if (!formData.postalCode.trim()) {
       newErrors.postalCode = "PLZ ist erforderlich"
     }
@@ -167,6 +174,9 @@ export default function ProfilePage() {
     }
     if (user.phone !== formData.phone.trim()) {
       changes.phone = { old: user.phone, new: formData.phone.trim() }
+    }
+    if (user.address !== formData.address.trim()) {
+      changes.address = { old: user.address || "", new: formData.address.trim() }
     }
     if (user.postalCode !== formData.postalCode.trim()) {
       changes.postalCode = { old: user.postalCode || "", new: formData.postalCode.trim() }
@@ -344,6 +354,28 @@ export default function ProfilePage() {
                 </>
               ) : (
                 <p className="font-medium text-base">{user.phone}</p>
+              )}
+            </div>
+
+            {/* Address */}
+            <div className="space-y-2">
+              <Label htmlFor="address" className="text-sm text-muted-foreground flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                Adresse
+              </Label>
+              {isEditMode ? (
+                <>
+                  <Input
+                    id="address"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    className="h-12"
+                    required
+                  />
+                  {errors.address && <p className="text-sm text-destructive">{errors.address}</p>}
+                </>
+              ) : (
+                <p className="font-medium text-base">{user.address || "-"}</p>
               )}
             </div>
 

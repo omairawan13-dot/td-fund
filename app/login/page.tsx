@@ -26,6 +26,7 @@ export default function LoginPage() {
   const [regName, setRegName] = useState("")
   const [regTitle, setRegTitle] = useState("")
   const [regPhone, setRegPhone] = useState("")
+  const [regAddress, setRegAddress] = useState("")
   const [regPostalCode, setRegPostalCode] = useState("")
   const [regCity, setRegCity] = useState("")
   const [regError, setRegError] = useState("")
@@ -73,7 +74,7 @@ export default function LoginPage() {
     setRegLoading(true)
 
     try {
-        const { error } = await signup(regEmail, regPassword, regName, regTitle, regPhone, regPostalCode, regCity)
+        const { error } = await signup(regEmail, regPassword, regName, regTitle, regPhone, regAddress, regPostalCode, regCity)
         if (error) {
             setRegError(error.message || "Registrierung fehlgeschlagen. Bitte überprüfen Sie Ihre Daten.")
         } else {
@@ -84,6 +85,7 @@ export default function LoginPage() {
             setRegName("")
             setRegTitle("")
             setRegPhone("")
+            setRegAddress("")
             setRegPostalCode("")
             setRegCity("")
         }
@@ -228,6 +230,20 @@ export default function LoginPage() {
                       placeholder="+43 123 456789"
                       value={regPhone}
                       onChange={(e) => setRegPhone(e.target.value)}
+                      required
+                      className="h-12 text-base"
+                      disabled={regLoading}
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="reg-address">Adresse *</Label>
+                    <Input
+                      id="reg-address"
+                      type="text"
+                      placeholder="Musterstraße 123"
+                      value={regAddress}
+                      onChange={(e) => setRegAddress(e.target.value)}
                       required
                       className="h-12 text-base"
                       disabled={regLoading}

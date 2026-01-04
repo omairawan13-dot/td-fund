@@ -2,16 +2,16 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { type User, type Role, type Transaction } from "@/lib/mock-data"
-import { getUsers, updateUser, getTransactions, getUsersNegative30Days, getUsersSortedByNegativeDays, type UserWithNegativeDays, markUsersInactiveAfter90Days, getInactiveUsers90Days, sendManualReminderEmail, getPendingUsers, approveUser, rejectUser } from "@/lib/api"
+import { getUsers, updateUser, getTransactions, getUsersNegative30Days, getUsersSortedByNegativeDays, type UserWithNegativeDays, markUsersInactiveAfter90Days, getInactiveUsers90Days, sendManualReminderEmail, getPendingUsers, approveUser, rejectUser, addBulkMemberImports, getBulkMemberImports, updateBulkMemberImport, deleteBulkMemberImport, createAccountFromImport, type BulkMemberImport, type BulkMemberImportInput } from "@/lib/api"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Edit, UserIcon, Shield, Loader2, ArrowUpCircle, ArrowDownCircle, Search, Plus, AlertTriangle, Mail, X, Check, XCircle, UserCheck } from "lucide-react"
+import { Edit, UserIcon, Shield, Loader2, ArrowUpCircle, ArrowDownCircle, Search, Plus, AlertTriangle, Mail, X, Check, XCircle, UserCheck, Upload } from "lucide-react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -59,12 +59,25 @@ export default function MembersPage() {
   const [loadingPendingUsers, setLoadingPendingUsers] = useState(false)
   const [processingUserId, setProcessingUserId] = useState<string | null>(null)
   const [pendingUsersCount, setPendingUsersCount] = useState(0)
+  const [isBulkImportDialogOpen, setIsBulkImportDialogOpen] = useState(false)
+  const [isBulkImportReviewDialogOpen, setIsBulkImportReviewDialogOpen] = useState(false)
+  const [bulkImports, setBulkImports] = useState<BulkMemberImport[]>([])
+  const [loadingBulkImports, setLoadingBulkImports] = useState(false)
+  const [isUploadingBulkImport, setIsUploadingBulkImport] = useState(false)
+  const [editingImportId, setEditingImportId] = useState<string | null>(null)
+  const [creatingAccountForImportId, setCreatingAccountForImportId] = useState<string | null>(null)
+  const [accountFormData, setAccountFormData] = useState({
+    password: "",
+    title: "Herr",
+  })
+  const bulkImportFileInputRef = useRef<HTMLInputElement>(null)
 
   // Load users from database
   useEffect(() => {
     loadMembers()
     loadUsers90PlusDaysCount()
     loadPendingUsers()
+    loadBulkImports()
   }, [])
 
   useEffect(() => {
@@ -73,6 +86,13 @@ export default function MembersPage() {
       loadPendingUsers()
     }
   }, [isPendingRegistrationsDialogOpen])
+
+  useEffect(() => {
+    // Load bulk imports when review dialog opens
+    if (isBulkImportReviewDialogOpen) {
+      loadBulkImports()
+    }
+  }, [isBulkImportReviewDialogOpen])
 
   const loadPendingUsers = async () => {
     setLoadingPendingUsers(true)
@@ -296,6 +316,232 @@ export default function MembersPage() {
     setIsCreatingTransaction(false)
   }
 
+  // ============================================
+  // BULK MEMBER IMPORT FUNCTIONS
+  // ============================================
+
+  const loadBulkImports = async () => {
+    setLoadingBulkImports(true)
+    const imports = await getBulkMemberImports()
+    setBulkImports(imports)
+    setLoadingBulkImports(false)
+  }
+
+  const handleOpenBulkImport = () => {
+    setIsBulkImportDialogOpen(true)
+  }
+
+  const handleOpenBulkImportReview = async () => {
+    await loadBulkImports()
+    setIsBulkImportReviewDialogOpen(true)
+  }
+
+  // Detect delimiter in CSV line
+  const detectDelimiter = (line: string): string => {
+    if (line.includes("\t")) return "\t"
+    if (line.includes(";")) return ";"
+    return ","
+  }
+
+  // Parse a CSV line respecting quotes
+  const parseCSVLine = (line: string, delimiter: string): string[] => {
+    const result: string[] = []
+    let current = ""
+    let inQuotes = false
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i]
+      const nextChar = line[i + 1]
+
+      if (char === '"') {
+        if (inQuotes && nextChar === '"') {
+          current += '"'
+          i++
+        } else {
+          inQuotes = !inQuotes
+        }
+      } else if (char === delimiter && !inQuotes) {
+        result.push(current)
+        current = ""
+      } else {
+        current += char
+      }
+    }
+    result.push(current)
+
+    return result
+  }
+
+  // Parse CSV for bulk member import
+  const parseBulkMemberCSV = (text: string): BulkMemberImportInput[] => {
+    const lines = text.split(/\r?\n/).filter(line => line.trim())
+    if (lines.length === 0) return []
+
+    // Find header row
+    let headerIndex = 0
+    const headerLine = lines[0].toLowerCase()
+    const expectedHeaders = ["s#", "no", "name", "address", "plz", "city", "mobile phone number", "email", "membership date", "photo", "status", "gender"]
+    
+    // Check if first line is header
+    let isHeader = false
+    for (const header of expectedHeaders) {
+      if (headerLine.includes(header)) {
+        isHeader = true
+        break
+      }
+    }
+
+    if (!isHeader) {
+      // Try to find header in first few lines
+      for (let i = 0; i < Math.min(5, lines.length); i++) {
+        const line = lines[i].toLowerCase()
+        for (const header of expectedHeaders) {
+          if (line.includes(header)) {
+            headerIndex = i
+            isHeader = true
+            break
+          }
+        }
+        if (isHeader) break
+      }
+    }
+
+    const startIndex = isHeader ? headerIndex + 1 : 0
+    const delimiter = detectDelimiter(lines[startIndex] || lines[0])
+    
+    // Parse header to get column indices
+    const headerRow = parseCSVLine(lines[headerIndex] || lines[0], delimiter)
+    const headerMap: Record<string, number> = {}
+    headerRow.forEach((col, idx) => {
+      const normalized = col.toLowerCase().replace(/^["']|["']$/g, "").trim()
+      if (normalized.includes("s#") || normalized === "s") headerMap.s_number = idx
+      if (normalized === "no" || normalized.includes("nummer")) headerMap.no = idx
+      if (normalized === "name") headerMap.name = idx
+      if (normalized === "address" || normalized === "adresse") headerMap.address = idx
+      if (normalized === "plz" || normalized.includes("postal")) headerMap.postal_code = idx
+      if (normalized === "city" || normalized === "ort") headerMap.city = idx
+      if (normalized.includes("mobile") || normalized.includes("phone")) headerMap.mobile_phone = idx
+      if (normalized === "email") headerMap.email = idx
+      if (normalized.includes("membership") || normalized.includes("date")) headerMap.membership_date = idx
+      if (normalized === "photo") headerMap.photo_url = idx
+      if (normalized === "status") headerMap.status = idx
+      if (normalized === "gender") headerMap.gender = idx
+    })
+
+    const imports: BulkMemberImportInput[] = []
+
+    for (let i = startIndex; i < lines.length; i++) {
+      const line = lines[i].trim()
+      if (!line) continue
+
+      const parts = parseCSVLine(line, delimiter)
+      if (parts.length < 2) continue
+
+      // Extract values based on header map
+      const getValue = (key: string): string | undefined => {
+        const idx = headerMap[key]
+        if (idx === undefined || idx >= parts.length) return undefined
+        const value = parts[idx]?.replace(/^["']|["']$/g, "").trim()
+        return value || undefined
+      }
+
+      const name = getValue("name")
+      if (!name) continue // Skip rows without name
+
+      imports.push({
+        s_number: getValue("s_number"),
+        no: getValue("no"),
+        name: name,
+        address: getValue("address"),
+        postal_code: getValue("postal_code"),
+        city: getValue("city"),
+        mobile_phone: getValue("mobile_phone"),
+        email: getValue("email"),
+        membership_date: getValue("membership_date"),
+        photo_url: getValue("photo_url"),
+        status: getValue("status"),
+        gender: getValue("gender"),
+      })
+    }
+
+    return imports
+  }
+
+  const handleBulkImportFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    setIsUploadingBulkImport(true)
+    try {
+      const text = await file.text()
+      const parsedImports = parseBulkMemberCSV(text)
+      
+      if (parsedImports.length === 0) {
+        alert("Keine gültigen Daten in der CSV-Datei gefunden")
+        return
+      }
+
+      // Validate: at least name is required
+      const validImports = parsedImports.filter(imp => imp.name && imp.name.trim().length > 0)
+      
+      if (validImports.length === 0) {
+        alert("Keine gültigen Mitglieder in der CSV-Datei gefunden (Name ist erforderlich)")
+        return
+      }
+
+      if (validImports.length < parsedImports.length) {
+        alert(`${parsedImports.length - validImports.length} Zeilen wurden übersprungen (fehlender Name)`)
+      }
+
+      const success = await addBulkMemberImports(validImports)
+      
+      if (success) {
+        setIsBulkImportDialogOpen(false)
+        await loadBulkImports()
+        setIsBulkImportReviewDialogOpen(true)
+        if (bulkImportFileInputRef.current) {
+          bulkImportFileInputRef.current.value = ""
+        }
+      } else {
+        alert("Fehler beim Hochladen der CSV-Datei")
+      }
+    } catch (error) {
+      alert("Fehler beim Lesen der Datei: " + (error as Error).message)
+    } finally {
+      setIsUploadingBulkImport(false)
+    }
+  }
+
+  const handleUpdateBulkImport = async (id: string, updates: Partial<BulkMemberImportInput>) => {
+    const success = await updateBulkMemberImport(id, updates)
+    if (success) {
+      await loadBulkImports()
+      setEditingImportId(null)
+    } else {
+      alert("Fehler beim Aktualisieren der Daten")
+    }
+  }
+
+  const handleCreateAccountFromImport = async (importId: string) => {
+    if (!accountFormData.password || accountFormData.password.length < 6) {
+      alert("Bitte geben Sie ein Passwort mit mindestens 6 Zeichen ein")
+      return
+    }
+
+    setCreatingAccountForImportId(importId)
+    const result = await createAccountFromImport(importId, accountFormData.password, accountFormData.title)
+    setCreatingAccountForImportId(null)
+
+    if (result.success) {
+      alert("Konto erfolgreich erstellt!")
+      setAccountFormData({ password: "", title: "Herr" })
+      await loadBulkImports()
+      await loadMembers()
+    } else {
+      alert(result.error || "Fehler beim Erstellen des Kontos")
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -379,6 +625,22 @@ export default function MembersPage() {
                   className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs font-bold"
                 >
                   {pendingUsersCount > 9 ? "9+" : pendingUsersCount}
+                </Badge>
+              )}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handleOpenBulkImportReview}
+              className="gap-2 relative"
+            >
+              <Upload className="h-4 w-4" />
+              Bulk Import Members
+              {bulkImports.length > 0 && (
+                <Badge
+                  variant="destructive"
+                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs font-bold"
+                >
+                  {bulkImports.length > 9 ? "9+" : bulkImports.length}
                 </Badge>
               )}
             </Button>
@@ -1021,8 +1283,6 @@ export default function MembersPage() {
                           <div className="space-y-1 text-sm text-muted-foreground">
                             <p><strong>E-Mail:</strong> {user.email}</p>
                             <p><strong>Telefon:</strong> {user.phone || "Nicht angegeben"}</p>
-                            <p><strong>Adresse:</strong> {user.address || "Nicht angegeben"}</p>
-                            <p><strong>Registriert am:</strong> {user.created_at ? new Date(user.created_at).toLocaleDateString("de-DE") : "Unbekannt"}</p>
                           </div>
                         </div>
                         <div className="flex gap-2">
@@ -1057,6 +1317,310 @@ export default function MembersPage() {
                         </div>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk Import Upload Dialog */}
+      <Dialog open={isBulkImportDialogOpen} onOpenChange={setIsBulkImportDialogOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Bulk Import Members</DialogTitle>
+            <DialogDescription>
+              Laden Sie eine CSV-Datei mit Mitgliederdaten hoch. Die Daten werden zur Überprüfung gespeichert.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="flex items-center justify-center w-full">
+              <label
+                htmlFor="bulk-import-file"
+                className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-muted-foreground/25 rounded-lg cursor-pointer hover:bg-muted/50 transition-colors"
+              >
+                <Upload className="h-8 w-8 text-muted-foreground mb-2" />
+                <span className="text-sm text-muted-foreground">CSV-Datei auswählen</span>
+              </label>
+              <Input
+                id="bulk-import-file"
+                type="file"
+                accept=".csv,.txt"
+                onChange={handleBulkImportFileUpload}
+                className="hidden"
+                ref={bulkImportFileInputRef}
+                disabled={isUploadingBulkImport}
+              />
+            </div>
+            {isUploadingBulkImport && (
+              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Verarbeitung...
+              </div>
+            )}
+            <div className="text-xs text-muted-foreground space-y-1">
+              <p>Erwartete Spalten: S#, No, Name, Address, PLZ, City, Mobile Phone Number, Email, Membership Date, Photo, Status, Gender</p>
+              <p>Name ist erforderlich. Alle anderen Felder sind optional.</p>
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => setIsBulkImportDialogOpen(false)}
+              className="w-full h-12"
+              disabled={isUploadingBulkImport}
+            >
+              Abbrechen
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Bulk Import Review Dialog */}
+      <Dialog open={isBulkImportReviewDialogOpen} onOpenChange={setIsBulkImportReviewDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Bulk Import Review</DialogTitle>
+            <DialogDescription>
+              Überprüfen und bearbeiten Sie die importierten Mitgliederdaten, dann erstellen Sie Konten
+            </DialogDescription>
+          </DialogHeader>
+          
+          {loadingBulkImports ? (
+            <div className="flex justify-center p-8">
+              <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+            </div>
+          ) : bulkImports.length === 0 ? (
+            <div className="text-center p-8">
+              <p className="text-muted-foreground mb-4">Keine importierten Mitglieder vorhanden</p>
+              <Button onClick={handleOpenBulkImport} className="gap-2">
+                <Upload className="h-4 w-4" />
+                CSV hochladen
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {bulkImports.map((importItem) => (
+                <Card key={importItem.id}>
+                  <CardContent className="p-4">
+                    {editingImportId === importItem.id ? (
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor={`name-${importItem.id}`}>Name *</Label>
+                            <Input
+                              id={`name-${importItem.id}`}
+                              value={importItem.name}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { name: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor={`email-${importItem.id}`}>Email</Label>
+                            <Input
+                              id={`email-${importItem.id}`}
+                              type="email"
+                              value={importItem.email || ""}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { email: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor={`phone-${importItem.id}`}>Telefon</Label>
+                            <Input
+                              id={`phone-${importItem.id}`}
+                              value={importItem.mobile_phone || ""}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { mobile_phone: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor={`address-${importItem.id}`}>Adresse</Label>
+                            <Input
+                              id={`address-${importItem.id}`}
+                              value={importItem.address || ""}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { address: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor={`plz-${importItem.id}`}>PLZ</Label>
+                            <Input
+                              id={`plz-${importItem.id}`}
+                              value={importItem.postal_code || ""}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { postal_code: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor={`city-${importItem.id}`}>Ort</Label>
+                            <Input
+                              id={`city-${importItem.id}`}
+                              value={importItem.city || ""}
+                              onChange={(e) => handleUpdateBulkImport(importItem.id, { city: e.target.value })}
+                              className="h-10"
+                            />
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setEditingImportId(null)}
+                            className="flex-1"
+                          >
+                            Speichern
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setEditingImportId(null)}
+                            className="flex-1"
+                          >
+                            Abbrechen
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-4">
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1 space-y-2">
+                            <div className="flex items-center gap-2">
+                              <p className="font-medium text-lg">{importItem.name}</p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 text-sm">
+                              {importItem.email && (
+                                <div>
+                                  <span className="text-muted-foreground">Email: </span>
+                                  <span>{importItem.email}</span>
+                                </div>
+                              )}
+                              {importItem.mobile_phone && (
+                                <div>
+                                  <span className="text-muted-foreground">Telefon: </span>
+                                  <span>{importItem.mobile_phone}</span>
+                                </div>
+                              )}
+                              {importItem.address && (
+                                <div>
+                                  <span className="text-muted-foreground">Adresse: </span>
+                                  <span>{importItem.address}</span>
+                                </div>
+                              )}
+                              {importItem.postal_code && (
+                                <div>
+                                  <span className="text-muted-foreground">PLZ: </span>
+                                  <span>{importItem.postal_code}</span>
+                                </div>
+                              )}
+                              {importItem.city && (
+                                <div>
+                                  <span className="text-muted-foreground">Ort: </span>
+                                  <span>{importItem.city}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => setEditingImportId(importItem.id)}
+                              className="gap-2"
+                            >
+                              <Edit className="h-4 w-4" />
+                              Bearbeiten
+                            </Button>
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={async () => {
+                                if (confirm("Möchten Sie diesen Import wirklich löschen?")) {
+                                  await deleteBulkMemberImport(importItem.id)
+                                  await loadBulkImports()
+                                }
+                              }}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Account Creation Form */}
+                        {creatingAccountForImportId === importItem.id ? (
+                          <div className="border-t pt-4 space-y-4">
+                            <div className="space-y-2">
+                              <Label htmlFor={`title-${importItem.id}`}>Anrede *</Label>
+                              <Select
+                                value={accountFormData.title}
+                                onValueChange={(value) => setAccountFormData({ ...accountFormData, title: value })}
+                              >
+                                <SelectTrigger className="h-10">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="Herr">Herr</SelectItem>
+                                  <SelectItem value="Frau">Frau</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor={`password-${importItem.id}`}>Passwort *</Label>
+                              <Input
+                                id={`password-${importItem.id}`}
+                                type="password"
+                                value={accountFormData.password}
+                                onChange={(e) => setAccountFormData({ ...accountFormData, password: e.target.value })}
+                                placeholder="Mindestens 6 Zeichen"
+                                className="h-10"
+                              />
+                            </div>
+                            <div className="flex gap-2">
+                              <Button
+                                variant="default"
+                                size="sm"
+                                onClick={() => handleCreateAccountFromImport(importItem.id)}
+                                disabled={!accountFormData.password || accountFormData.password.length < 6}
+                                className="flex-1 gap-2"
+                              >
+                                <UserCheck className="h-4 w-4" />
+                                Konto erstellen
+                              </Button>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                  setCreatingAccountForImportId(null)
+                                  setAccountFormData({ password: "", title: "Herr" })
+                                }}
+                                className="flex-1"
+                              >
+                                Abbrechen
+                              </Button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="border-t pt-4">
+                            <Button
+                              variant="default"
+                              size="sm"
+                              onClick={() => {
+                                setCreatingAccountForImportId(importItem.id)
+                                setAccountFormData({ password: "", title: "Herr" })
+                              }}
+                              className="w-full gap-2"
+                              disabled={!importItem.email}
+                            >
+                              <UserCheck className="h-4 w-4" />
+                              Konto erstellen
+                            </Button>
+                            {!importItem.email && (
+                              <p className="text-xs text-destructive mt-2">Email ist erforderlich, um ein Konto zu erstellen</p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               ))}

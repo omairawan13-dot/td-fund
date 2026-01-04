@@ -9,7 +9,7 @@ interface AuthState {
   isAuthenticated: boolean
   isLoading: boolean
   login: (email: string, password: string) => Promise<{ error: any; user?: User | null }>
-  signup: (email: string, password: string, name: string, title: string, phone: string, postalCode: string, city: string) => Promise<{ error: any; user?: User | null }>
+  signup: (email: string, password: string, name: string, title: string, phone: string, address: string, postalCode: string, city: string) => Promise<{ error: any; user?: User | null }>
   logout: () => Promise<void>
   checkSession: () => Promise<void>
   refreshUser: () => Promise<void>
@@ -94,7 +94,7 @@ export const useAuth = create<AuthState>((set, get) => ({
     }
     return { error: loginError, user: loggedInUser }
   },
-  signup: async (email, password, name, title, phone, postalCode, city) => {
+  signup: async (email, password, name, title, phone, address, postalCode, city) => {
     const supabase = createClient()
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -104,6 +104,7 @@ export const useAuth = create<AuthState>((set, get) => ({
           name,
           title,
           phone,
+          address: address,
           postal_code: postalCode,
           city: city,
           role: "USER",

@@ -262,7 +262,7 @@ export default function AdminNewsPage() {
     setFormData({
       title: post.title,
       content: post.content,
-      excerpt: post.excerpt,
+      excerpt: "",
       isPinned: post.isPinned || false,
     })
     setBannerImagePreview(post.bannerImageUrl || null)
@@ -964,16 +964,6 @@ export default function AdminNewsPage() {
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                required
-                className="h-12"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="excerpt">Kurzbeschreibung</Label>
-              <Input
-                id="excerpt"
-                value={formData.excerpt}
-                onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
                 required
                 className="h-12"
               />

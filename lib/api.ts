@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/client"
-import { type User, type Case, type Transaction, type PendingManualReview, type NewsPost } from "@/lib/mock-data"
+import { type User, type Case, type Transaction, type PendingManualReview, type NewsPost, type BulkMemberImport, type BulkMemberImportInput } from "@/lib/mock-data"
 
 export async function getUsers(): Promise<User[]> {
   const supabase = createClient()
@@ -1091,11 +1091,25 @@ export async function getPendingUsers(): Promise<User[]> {
 export async function approveUser(userId: string): Promise<boolean> {
   const supabase = createClient()
   
-  // First, update user status to APPROVED
+  // Get the highest member_id from the database
+  const { data: maxMemberData } = await supabase
+    .from("users")
+    .select("member_id")
+    .not("member_id", "is", null)
+    .order("member_id", { ascending: false })
+    .limit(1)
+
+  // Calculate next member_id (start with 1 if no users exist)
+  const nextMemberId = maxMemberData && maxMemberData.length > 0 && maxMemberData[0]?.member_id
+    ? (maxMemberData[0].member_id as number) + 1 
+    : 1
+
+  // Update user status to APPROVED and assign member_id
   const { error: updateError } = await supabase
     .from("users")
     .update({ 
-      status: "APPROVED"
+      status: "APPROVED",
+      member_id: nextMemberId
     })
     .eq("id", userId)
 
@@ -1675,4 +1689,142 @@ export async function createUserNotification(
   }
 
   return data.id
+}
+
+// ============================================
+// BULK MEMBER IMPORTS API
+// ============================================
+
+export async function addBulkMemberImports(imports: BulkMemberImportInput[]): Promise<boolean> {
+  const supabase = createClient()
+  
+  // Get current user (admin)
+  const { data: { user } } = await supabase.auth.getUser()
+  
+  const dbImports = imports.map((imp) => ({
+    s_number: imp.s_number || null,
+    no: imp.no || null,
+    name: imp.name,
+    address: imp.address || null,
+    postal_code: imp.postal_code || null,
+    city: imp.city || null,
+    mobile_phone: imp.mobile_phone || null,
+    email: imp.email || null,
+    membership_date: imp.membership_date || null,
+    photo_url: imp.photo_url || null,
+    status: imp.status || null,
+    gender: imp.gender || null,
+    created_by: user?.id || null,
+  }))
+
+  const { error } = await supabase
+    .from("bulk_member_imports")
+    .insert(dbImports)
+
+  if (error) {
+    console.error("Error adding bulk member imports:", error)
+    return false
+  }
+
+  return true
+}
+
+export async function getBulkMemberImports(): Promise<BulkMemberImport[]> {
+  const supabase = createClient()
+  
+  const { data, error } = await supabase
+    .from("bulk_member_imports")
+    .select("*")
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    console.error("Error fetching bulk member imports:", error)
+    return []
+  }
+
+  return data.map((imp) => ({
+    id: imp.id,
+    s_number: imp.s_number || undefined,
+    no: imp.no || undefined,
+    name: imp.name,
+    address: imp.address || undefined,
+    postal_code: imp.postal_code || undefined,
+    city: imp.city || undefined,
+    mobile_phone: imp.mobile_phone || undefined,
+    email: imp.email || undefined,
+    membership_date: imp.membership_date || undefined,
+    photo_url: imp.photo_url || undefined,
+    status: imp.status || undefined,
+    gender: imp.gender || undefined,
+    created_at: imp.created_at,
+    created_by: imp.created_by || undefined,
+  }))
+}
+
+export async function updateBulkMemberImport(id: string, updates: Partial<BulkMemberImportInput>): Promise<boolean> {
+  const supabase = createClient()
+  
+  const dbUpdates: any = {}
+  if (updates.s_number !== undefined) dbUpdates.s_number = updates.s_number || null
+  if (updates.no !== undefined) dbUpdates.no = updates.no || null
+  if (updates.name !== undefined) dbUpdates.name = updates.name
+  if (updates.address !== undefined) dbUpdates.address = updates.address || null
+  if (updates.postal_code !== undefined) dbUpdates.postal_code = updates.postal_code || null
+  if (updates.city !== undefined) dbUpdates.city = updates.city || null
+  if (updates.mobile_phone !== undefined) dbUpdates.mobile_phone = updates.mobile_phone || null
+  if (updates.email !== undefined) dbUpdates.email = updates.email || null
+  if (updates.membership_date !== undefined) dbUpdates.membership_date = updates.membership_date || null
+  if (updates.photo_url !== undefined) dbUpdates.photo_url = updates.photo_url || null
+  if (updates.status !== undefined) dbUpdates.status = updates.status || null
+  if (updates.gender !== undefined) dbUpdates.gender = updates.gender || null
+
+  const { error } = await supabase
+    .from("bulk_member_imports")
+    .update(dbUpdates)
+    .eq("id", id)
+
+  if (error) {
+    console.error("Error updating bulk member import:", error)
+    return false
+  }
+
+  return true
+}
+
+export async function deleteBulkMemberImport(id: string): Promise<boolean> {
+  const supabase = createClient()
+  
+  const { error } = await supabase
+    .from("bulk_member_imports")
+    .delete()
+    .eq("id", id)
+
+  if (error) {
+    console.error("Error deleting bulk member import:", error)
+    return false
+  }
+
+  return true
+}
+
+export async function createAccountFromImport(
+  importId: string,
+  password: string,
+  title: string
+): Promise<{ success: boolean; userId?: string; error?: string }> {
+  try {
+    const response = await fetch("/api/admin/create-account-from-import", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ importId, password, title }),
+    })
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error("Error calling createAccountFromImport API:", error)
+    return { success: false, error: "Failed to create account" }
+  }
 }

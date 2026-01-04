@@ -458,9 +458,32 @@ export default function VerwaltungPage() {
   // Handle assigning user to current pending case
   const handleAssignPendingUser = async (userId: string) => {
     if (!currentPendingCase) return
-    await updatePendingReview(currentPendingCase.id, { assignedUserId: userId })
-    const updatedCases = await getPendingReviews()
-    setPendingCases(updatedCases)
+    const caseId = currentPendingCase.id
+    const previousAssignedUserId = currentPendingCase.assignedUserId
+    
+    // Update local state FIRST for instant UI feedback
+    setPendingCases(prevCases => 
+      prevCases.map(caseItem => 
+        caseItem.id === caseId 
+          ? { ...caseItem, assignedUserId: userId }
+          : caseItem
+      )
+    )
+    
+    // Then update in database in the background
+    try {
+      await updatePendingReview(caseId, { assignedUserId: userId })
+    } catch (err) {
+      console.error("Error updating pending review:", err)
+      // Revert optimistic update on error
+      setPendingCases(prevCases => 
+        prevCases.map(caseItem => 
+          caseItem.id === caseId 
+            ? { ...caseItem, assignedUserId: previousAssignedUserId }
+            : caseItem
+        )
+      )
+    }
   }
 
   // Process current pending case and move to next

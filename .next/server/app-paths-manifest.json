@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/admin/create-account-from-import/route": "app/api/admin/create-account-from-import/route.js",
+  "/api/admin/update-password/route": "app/api/admin/update-password/route.js",
+  "/api/send-email/route": "app/api/send-email/route.js",
+  "/dashboard/admin/cases/page": "app/dashboard/admin/cases/page.js",
+  "/dashboard/admin/members/page": "app/dashboard/admin/members/page.js",
+  "/dashboard/admin/news/page": "app/dashboard/admin/news/page.js",
+  "/dashboard/admin/verwaltung/page": "app/dashboard/admin/verwaltung/page.js",
+  "/dashboard/news/page": "app/dashboard/news/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/profile/page": "app/dashboard/profile/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js"
+}

@@ -1,0 +1,3 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["chunks/repos_tdfund final_td-fund_edge-wrapper_6393b988.js",24519,(e,t,n)=>{self._ENTRIES||={};let h=Promise.resolve().then(()=>e.i(52665));h.catch(()=>{}),self._ENTRIES.middleware_middleware=new Proxy(h,{get(e,t){if("then"===t)return(t,n)=>e.then(t,n);let n=(...n)=>e.then(e=>(0,e[t])(...n));return n.then=(n,h)=>e.then(e=>e[t]).then(n,h),n}})}]);
+
+//# sourceMappingURL=repos_tdfund%20final_td-fund_edge-wrapper_6393b988.js.map

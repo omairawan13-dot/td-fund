@@ -1,0 +1,16 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/admin/create-account-from-import/route": "/api/admin/create-account-from-import",
+  "/api/admin/update-password/route": "/api/admin/update-password",
+  "/api/send-email/route": "/api/send-email",
+  "/dashboard/admin/cases/page": "/dashboard/admin/cases",
+  "/dashboard/admin/members/page": "/dashboard/admin/members",
+  "/dashboard/admin/news/page": "/dashboard/admin/news",
+  "/dashboard/admin/verwaltung/page": "/dashboard/admin/verwaltung",
+  "/dashboard/news/page": "/dashboard/news",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/profile/page": "/dashboard/profile",
+  "/login/page": "/login",
+  "/page": "/"
+}

@@ -8,26 +8,17 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mitglieder Portal",
+  title: "TD-Fund Mitglieder Portal",
   description: "Mobile-first Mitglieder Verwaltung",
   generator: "v0.app",
   manifest: "/manifest.json",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
+        url: "/logo.jpg",
+      }
     ],
-    apple: "/apple-icon.png",
+    apple: "/logo.jpg",
   },
 }
 
