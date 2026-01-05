@@ -187,9 +187,7 @@ export default function MembersPage() {
       filtered = filtered.filter(
         (member) =>
           member.name.toLowerCase().includes(query) ||
-          member.email.toLowerCase().includes(query) ||
-          String(member.mitgliedsnummer).includes(query) ||
-          member.phone?.toLowerCase().includes(query)
+          String(member.mitgliedsnummer).includes(query)
       )
     }
 
@@ -694,7 +692,7 @@ export default function MembersPage() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="Nach Name, E-Mail, ID oder Telefon suchen..."
+            placeholder="Nach Name oder Mitgliedsnummer suchen..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 h-12"

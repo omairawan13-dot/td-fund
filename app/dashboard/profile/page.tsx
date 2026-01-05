@@ -3,12 +3,13 @@
 import { useState, useEffect, useRef } from "react"
 import { useAuth } from "@/lib/auth"
 import { createProfileChange, uploadUserImage, deleteUserImage } from "@/lib/api"
+import { createClient } from "@/lib/supabase/client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LogOut, Upload, Edit, Save, X, Loader2, Mail, Phone, MapPin } from "lucide-react"
+import { LogOut, Upload, Edit, Save, X, Loader2, Mail, Phone, MapPin, LockKeyhole } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -32,6 +33,13 @@ export default function ProfilePage() {
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
+  const [showPasswordChange, setShowPasswordChange] = useState(false)
+  const [passwordData, setPasswordData] = useState({
+    newPassword: "",
+    confirmPassword: "",
+  })
+  const [isChangingPassword, setIsChangingPassword] = useState(false)
+  const [passwordError, setPasswordError] = useState("")
 
   useEffect(() => {
     if (user) {
@@ -215,6 +223,48 @@ export default function ProfilePage() {
     }
 
     setIsSaving(false)
+  }
+
+  const handleChangePassword = async () => {
+    setPasswordError("")
+    
+    if (!passwordData.newPassword || !passwordData.confirmPassword) {
+      setPasswordError("Bitte füllen Sie alle Felder aus")
+      return
+    }
+
+    if (passwordData.newPassword.length < 6) {
+      setPasswordError("Das Passwort muss mindestens 6 Zeichen lang sein")
+      return
+    }
+
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      setPasswordError("Die Passwörter stimmen nicht überein")
+      return
+    }
+
+    setIsChangingPassword(true)
+    const supabase = createClient()
+
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: passwordData.newPassword
+      })
+
+      if (error) {
+        setPasswordError(error.message || "Fehler beim Ändern des Passworts")
+      } else {
+        alert("Passwort erfolgreich geändert!")
+        setPasswordData({ newPassword: "", confirmPassword: "" })
+        setShowPasswordChange(false)
+        setPasswordError("")
+      }
+    } catch (error) {
+      setPasswordError("Fehler beim Ändern des Passworts")
+      console.error("Error changing password:", error)
+    } finally {
+      setIsChangingPassword(false)
+    }
   }
 
   const initials = user.name
@@ -455,6 +505,94 @@ export default function ProfilePage() {
                     </>
                   )}
                 </Button>
+              </div>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Password Change Section */}
+      <Card>
+        <CardContent className="pt-6">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <LockKeyhole className="h-5 w-5 text-muted-foreground" />
+                <Label className="text-base font-medium">Passwort ändern</Label>
+              </div>
+              {!showPasswordChange && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setShowPasswordChange(true)
+                    setPasswordError("")
+                    setPasswordData({ newPassword: "", confirmPassword: "" })
+                  }}
+                >
+                  Passwort ändern
+                </Button>
+              )}
+            </div>
+
+            {showPasswordChange && (
+              <div className="space-y-4 pt-2">
+                <div className="space-y-2">
+                  <Label htmlFor="newPassword">Neues Passwort</Label>
+                  <Input
+                    id="newPassword"
+                    type="password"
+                    value={passwordData.newPassword}
+                    onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
+                    className="h-12"
+                    placeholder="Mindestens 6 Zeichen"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Passwort bestätigen</Label>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    value={passwordData.confirmPassword}
+                    onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
+                    className="h-12"
+                    placeholder="Passwort erneut eingeben"
+                  />
+                </div>
+                {passwordError && (
+                  <p className="text-sm text-destructive">{passwordError}</p>
+                )}
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setShowPasswordChange(false)
+                      setPasswordData({ newPassword: "", confirmPassword: "" })
+                      setPasswordError("")
+                    }}
+                    className="flex-1 h-12"
+                    disabled={isChangingPassword}
+                  >
+                    Abbrechen
+                  </Button>
+                  <Button
+                    onClick={handleChangePassword}
+                    className="flex-1 h-12 gap-2"
+                    disabled={isChangingPassword}
+                  >
+                    {isChangingPassword ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Wird geändert...
+                      </>
+                    ) : (
+                      <>
+                        <LockKeyhole className="h-4 w-4" />
+                        Passwort ändern
+                      </>
+                    )}
+                  </Button>
+                </div>
               </div>
             )}
           </div>

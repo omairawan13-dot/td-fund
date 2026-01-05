@@ -1,36 +1,64 @@
-[00:00:02.064] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:02.338] Server  LOG     ✓ Ready in 1661ms
-[00:00:03.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:05.188] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:05.188] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/login","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653515778}
-[00:01:46.419] Browser WARN    Image with src "http://localhost:3000/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:01:46.520] Browser WARN    Image with src "/logo.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
-Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:01:59.415] Server  LOG     ○ Compiling /dashboard/admin/verwaltung ...
-[00:02:01.259] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/verwaltung color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/verwaltung","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653631966}
-[00:02:37.579] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/news color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/news","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653668943}
-[00:02:47.862] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/cases color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/cases","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653679236}
-[00:02:49.620] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/verwaltung color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/verwaltung","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653680996}
-[00:02:52.975] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653684044}
-[00:06:32.764] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:33.154] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:06:33.154] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653904403}
-[00:07:09.149] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:09.715] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:07:09.716] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767653940956}
-[00:09:44.049] Server  LOG     ✓ Compiled in 524ms
-[00:09:48.493] Server  LOG     ✓ Compiled in 317ms
-[00:10:21.705] Server  LOG     ✓ Compiled in 206ms
-[00:12:19.563] Server  LOG     ✓ Compiled in 571ms
-[00:12:41.787] Server  LOG     ✓ Compiled in 160ms
-[00:12:44.921] Server  LOG     ✓ Compiled in 85ms
-[00:15:14.357] Browser ERROR   uncaughtError: ReferenceError: handleStartEditImport is not defined
-[00:15:15.223] Browser ERROR   uncaughtError: ReferenceError: handleStartEditImport is not defined
-[00:15:18.703] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:15:19.164] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:15:19.164] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767654430238}
-[00:15:27.700] Browser ERROR   uncaughtError: ReferenceError: handleStartEditImport is not defined
-[00:15:49.584] Server  LOG     ✓ Compiled in 267ms
-[00:16:07.514] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:07.722] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:16:07.722] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767654479083}
+[00:00:02.917] Server  WARN    ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:03.358] Server  LOG     ✓ Ready in 2.5s
+[00:00:07.038] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.550] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.550] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767654825092}
+[00:00:29.660] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:29.791] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:29.792] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767654847496}
+[00:01:15.716] Server  LOG     ✓ Compiled in 284ms
+[00:01:23.132] Server  LOG     ✓ Compiled in 64ms
+[00:03:27.764] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:28.020] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:28.020] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/admin/members color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/admin/members","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655025720}
+[00:03:33.516] Server  LOG     ○ Compiling /dashboard ...
+[00:03:36.780] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:37.227] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:37.227] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655034927}
+[00:03:40.310] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/news color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/news","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655038005}
+[00:03:42.936] Browser ERROR   uncaughtError: TypeError: Illegal constructor
+[00:03:42.937] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655040624}
+[00:05:52.687] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:53.006] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:53.006] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655170600}
+[00:05:53.007] Browser ERROR   uncaughtError: TypeError: Illegal constructor
+[00:06:02.317] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:02.556] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:06:02.556] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655180139}
+[00:06:02.556] Browser ERROR   uncaughtError: TypeError: Illegal constructor
+[00:06:07.486] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:07.668] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:06:07.668] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655185367}
+[00:06:08.972] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/news color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/news","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655186663}
+[00:06:10.257] Browser ERROR   uncaughtError: TypeError: Illegal constructor
+[00:06:10.257] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655187942}
+[00:07:33.346] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:07:33.359] Server  LOG     ✓ Compiled in 392ms
+[00:07:34.855] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:35.812] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:35.813] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655272993}
+[00:07:35.813] Browser ERROR   uncaughtError: ReferenceError: LockKeyhole is not defined
+[00:08:03.681] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:03.914] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:03.914] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655301526}
+[00:08:03.914] Browser ERROR   uncaughtError: ReferenceError: LockKeyhole is not defined
+[00:08:04.561] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:08:04.580] Server  LOG     ✓ Compiled in 218ms
+[00:08:05.555] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:05.731] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:05.731] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655303403}
+[00:08:06.678] Server  LOG     ✓ Compiled in 64ms
+[00:08:43.039] Browser ERROR   unhandledRejection: ReferenceError: createClient is not defined
+[00:09:05.425] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:05.602] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:05.602] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655363280}
+[00:09:24.306] Server  LOG     ✓ Compiled in 300ms
+[00:09:43.800] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/news color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/news","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655401486}
+[00:09:45.232] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655402917}
+[00:09:48.508] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655406187}
+[00:09:58.450] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:58.631] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:58.631] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/profile color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard/profile","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655416306}
+[00:10:10.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/login","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655428656}
+[00:10:11.172] Browser WARN    Image with src "http://localhost:3000/logo.jpg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:22.008] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1767655439691}
