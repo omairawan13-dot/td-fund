@@ -96,18 +96,43 @@ export async function POST(request: NextRequest) {
 
     const userId = authData.user.id
 
-    // Get the highest member_id from the database
-    const { data: maxMemberData } = await supabase
-      .from("users")
-      .select("member_id")
-      .not("member_id", "is", null)
-      .order("member_id", { ascending: false })
-      .limit(1)
+    // Determine member_id: use "No" from CSV if available, otherwise auto-generate
+    let memberId: number | null = null
 
-    // Calculate next member_id
-    const nextMemberId = maxMemberData && maxMemberData.length > 0 && maxMemberData[0]?.member_id
-      ? (maxMemberData[0].member_id as number) + 1 
-      : 1
+    if (importData.no) {
+      // Try to parse the "No" column as a number
+      const parsedNo = parseInt(importData.no, 10)
+      if (!isNaN(parsedNo) && parsedNo > 0) {
+        // Check if this member_id already exists
+        const { data: existingMember } = await supabase
+          .from("users")
+          .select("id")
+          .eq("member_id", parsedNo)
+          .single()
+
+        if (existingMember) {
+          return NextResponse.json(
+            { success: false, error: `Member ID ${parsedNo} is already assigned to another user` },
+            { status: 409 }
+          )
+        }
+        memberId = parsedNo
+      }
+    }
+
+    // If no valid "No" was provided, auto-generate the next member_id
+    if (memberId === null) {
+      const { data: maxMemberData } = await supabase
+        .from("users")
+        .select("member_id")
+        .not("member_id", "is", null)
+        .order("member_id", { ascending: false })
+        .limit(1)
+
+      memberId = maxMemberData && maxMemberData.length > 0 && maxMemberData[0]?.member_id
+        ? (maxMemberData[0].member_id as number) + 1 
+        : 1
+    }
 
     // Update user profile with all data from import
     const { error: updateError } = await supabase
@@ -119,7 +144,7 @@ export async function POST(request: NextRequest) {
         address: importData.address || "",
         postal_code: importData.postal_code || null,
         city: importData.city || null,
-        member_id: nextMemberId,
+        member_id: memberId,
         status: "APPROVED",
         image_url: importData.photo_url || null,
         balance: -100, // Initial fee

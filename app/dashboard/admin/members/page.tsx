@@ -65,6 +65,7 @@ export default function MembersPage() {
   const [loadingBulkImports, setLoadingBulkImports] = useState(false)
   const [isUploadingBulkImport, setIsUploadingBulkImport] = useState(false)
   const [editingImportId, setEditingImportId] = useState<string | null>(null)
+  const [editingImportData, setEditingImportData] = useState<Partial<BulkMemberImportInput> | null>(null)
   const [creatingAccountForImportId, setCreatingAccountForImportId] = useState<string | null>(null)
   const [accountFormData, setAccountFormData] = useState({
     password: "",
@@ -517,9 +518,32 @@ export default function MembersPage() {
     if (success) {
       await loadBulkImports()
       setEditingImportId(null)
+      setEditingImportData(null)
     } else {
       alert("Fehler beim Aktualisieren der Daten")
     }
+  }
+
+  const handleStartEditImport = (importItem: BulkMemberImport) => {
+    setEditingImportData({
+      name: importItem.name,
+      email: importItem.email,
+      mobile_phone: importItem.mobile_phone,
+      address: importItem.address,
+      postal_code: importItem.postal_code,
+      city: importItem.city,
+    })
+    setEditingImportId(importItem.id)
+  }
+
+  const handleSaveEditImport = async () => {
+    if (!editingImportId || !editingImportData) return
+    await handleUpdateBulkImport(editingImportId, editingImportData)
+  }
+
+  const handleCancelEditImport = () => {
+    setEditingImportId(null)
+    setEditingImportData(null)
   }
 
   const handleCreateAccountFromImport = async (importId: string) => {
@@ -1378,7 +1402,7 @@ export default function MembersPage() {
 
       {/* Bulk Import Review Dialog */}
       <Dialog open={isBulkImportReviewDialogOpen} onOpenChange={setIsBulkImportReviewDialogOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-6xl max-h-[95vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Bulk Import Review</DialogTitle>
             <DialogDescription>
@@ -1403,15 +1427,29 @@ export default function MembersPage() {
               {bulkImports.map((importItem) => (
                 <Card key={importItem.id}>
                   <CardContent className="p-4">
-                    {editingImportId === importItem.id ? (
+                    {editingImportId === importItem.id && editingImportData ? (
                       <div className="space-y-4">
+                        {importItem.no && (
+                          <div className="space-y-2">
+                            <Label htmlFor={`no-${importItem.id}`}>Mitgliedsnummer (No)</Label>
+                            <Input
+                              id={`no-${importItem.id}`}
+                              value={importItem.no}
+                              disabled
+                              className="h-10 bg-muted"
+                            />
+                            <p className="text-xs text-muted-foreground">
+                              Diese Nummer wird als member_id beim Erstellen des Kontos verwendet
+                            </p>
+                          </div>
+                        )}
                         <div className="grid grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label htmlFor={`name-${importItem.id}`}>Name *</Label>
                             <Input
                               id={`name-${importItem.id}`}
-                              value={importItem.name}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { name: e.target.value })}
+                              value={editingImportData.name || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, name: e.target.value })}
                               className="h-10"
                             />
                           </div>
@@ -1420,8 +1458,8 @@ export default function MembersPage() {
                             <Input
                               id={`email-${importItem.id}`}
                               type="email"
-                              value={importItem.email || ""}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { email: e.target.value })}
+                              value={editingImportData.email || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, email: e.target.value })}
                               className="h-10"
                             />
                           </div>
@@ -1429,8 +1467,8 @@ export default function MembersPage() {
                             <Label htmlFor={`phone-${importItem.id}`}>Telefon</Label>
                             <Input
                               id={`phone-${importItem.id}`}
-                              value={importItem.mobile_phone || ""}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { mobile_phone: e.target.value })}
+                              value={editingImportData.mobile_phone || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, mobile_phone: e.target.value })}
                               className="h-10"
                             />
                           </div>
@@ -1438,8 +1476,8 @@ export default function MembersPage() {
                             <Label htmlFor={`address-${importItem.id}`}>Adresse</Label>
                             <Input
                               id={`address-${importItem.id}`}
-                              value={importItem.address || ""}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { address: e.target.value })}
+                              value={editingImportData.address || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, address: e.target.value })}
                               className="h-10"
                             />
                           </div>
@@ -1447,8 +1485,8 @@ export default function MembersPage() {
                             <Label htmlFor={`plz-${importItem.id}`}>PLZ</Label>
                             <Input
                               id={`plz-${importItem.id}`}
-                              value={importItem.postal_code || ""}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { postal_code: e.target.value })}
+                              value={editingImportData.postal_code || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, postal_code: e.target.value })}
                               className="h-10"
                             />
                           </div>
@@ -1456,17 +1494,17 @@ export default function MembersPage() {
                             <Label htmlFor={`city-${importItem.id}`}>Ort</Label>
                             <Input
                               id={`city-${importItem.id}`}
-                              value={importItem.city || ""}
-                              onChange={(e) => handleUpdateBulkImport(importItem.id, { city: e.target.value })}
+                              value={editingImportData.city || ""}
+                              onChange={(e) => setEditingImportData({ ...editingImportData, city: e.target.value })}
                               className="h-10"
                             />
                           </div>
                         </div>
                         <div className="flex gap-2">
                           <Button
-                            variant="outline"
+                            variant="default"
                             size="sm"
-                            onClick={() => setEditingImportId(null)}
+                            onClick={handleSaveEditImport}
                             className="flex-1"
                           >
                             Speichern
@@ -1474,7 +1512,7 @@ export default function MembersPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => setEditingImportId(null)}
+                            onClick={handleCancelEditImport}
                             className="flex-1"
                           >
                             Abbrechen
@@ -1487,8 +1525,19 @@ export default function MembersPage() {
                           <div className="flex-1 space-y-2">
                             <div className="flex items-center gap-2">
                               <p className="font-medium text-lg">{importItem.name}</p>
+                              {importItem.no && (
+                                <Badge variant="outline" className="ml-2">
+                                  Mitgliedsnummer: {importItem.no}
+                                </Badge>
+                              )}
                             </div>
                             <div className="grid grid-cols-2 gap-2 text-sm">
+                              {importItem.no && (
+                                <div>
+                                  <span className="text-muted-foreground">Mitgliedsnummer (No): </span>
+                                  <span className="font-semibold">{importItem.no}</span>
+                                </div>
+                              )}
                               {importItem.email && (
                                 <div>
                                   <span className="text-muted-foreground">Email: </span>
@@ -1525,7 +1574,7 @@ export default function MembersPage() {
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => setEditingImportId(importItem.id)}
+                              onClick={() => handleStartEditImport(importItem)}
                               className="gap-2"
                             >
                               <Edit className="h-4 w-4" />

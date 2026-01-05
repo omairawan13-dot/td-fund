@@ -1,0 +1,9 @@
+{
+  "/api/admin/create-account-from-import/route": "app/api/admin/create-account-from-import/route.js",
+  "/dashboard/admin/cases/page": "app/dashboard/admin/cases/page.js",
+  "/dashboard/admin/members/page": "app/dashboard/admin/members/page.js",
+  "/dashboard/admin/news/page": "app/dashboard/admin/news/page.js",
+  "/dashboard/admin/verwaltung/page": "app/dashboard/admin/verwaltung/page.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js"
+}
