@@ -22,23 +22,23 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { Upload, CheckCircle2, AlertTriangle, Search, ChevronDown, Loader2, ChevronRight, SkipForward, History } from "lucide-react"
-import { 
-  type User, 
+import { Upload, CheckCircle2, AlertTriangle, Search, ChevronDown, Loader2, ChevronRight, SkipForward, History, Split, Plus, Trash2, X } from "lucide-react"
+import {
+  type User,
   type PendingManualReview
 } from "@/lib/mock-data"
-import { 
-  getUsers, 
-  processDeposit, 
-  getPendingReviews, 
-  addPendingReviews, 
-  updatePendingReview, 
+import {
+  getUsers,
+  processDeposit,
+  getPendingReviews,
+  addPendingReviews,
+  updatePendingReview,
   deletePendingReview,
   saveProcessedReviewToHistory,
   getProcessedReviewsHistory,
   createCSVUpload,
   getCSVUploads,
-  type PendingReviewInput 
+  type PendingReviewInput
 } from "@/lib/api"
 
 interface CSVRow {
@@ -65,12 +65,21 @@ interface ProcessedRow {
   timestamp?: string
 }
 
+interface SplitEntry {
+  id: string;
+  userId: string;
+  amount: number;
+  searchQuery: string;
+  isSearchOpen: boolean;
+}
+
 export default function VerwaltungPage() {
   const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false)
   const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false)
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
   const [processedRows, setProcessedRows] = useState<ProcessedRow[]>([])
   const [isProcessing, setIsProcessing] = useState(false)
+  const [isConfirming, setIsConfirming] = useState(false)
   const [openSearchIndex, setOpenSearchIndex] = useState<number | null>(null)
   const [searchQueries, setSearchQueries] = useState<Record<number, string>>({})
   const searchRefs = useRef<Record<number, HTMLDivElement | null>>({})
@@ -87,6 +96,10 @@ export default function VerwaltungPage() {
   const [isLoadingHistory, setIsLoadingHistory] = useState(false)
   const [csvUploads, setCsvUploads] = useState<any[]>([])
   const [currentCsvUploadId, setCurrentCsvUploadId] = useState<string | null>(null)
+
+  // Split functionality state
+  const [isSplitMode, setIsSplitMode] = useState(false)
+  const [splitEntries, setSplitEntries] = useState<SplitEntry[]>([])
 
   // Load users and pending cases on mount
   useEffect(() => {
@@ -266,10 +279,10 @@ export default function VerwaltungPage() {
       if (parts.length >= 2) {
         const firstCol = parts[0]?.toLowerCase().replace(/^["']|["']$/g, "")
         const secondCol = parts[1]?.toLowerCase().replace(/^["']|["']$/g, "")
-        
+
         // Skip if this row only contains header-like text (e.g., "INFO" alone or "DATE", "INFO")
-        if ((firstCol === "date" || firstCol === "info") && 
-            (secondCol === "info" || secondCol === "" || parts.length <= 2)) {
+        if ((firstCol === "date" || firstCol === "info") &&
+          (secondCol === "info" || secondCol === "" || parts.length <= 2)) {
           continue
         }
 
@@ -339,26 +352,29 @@ export default function VerwaltungPage() {
     try {
       const text = await file.text()
       const rows = parseCSV(text)
+      // reset split mode when New upload happens (optional, but good practice)
+      setIsSplitMode(false)
+      setSplitEntries([])
       const processed = processCSVRows(rows)
-      
+
       // Create CSV upload record
       const autoProcessed = processed.filter(r => r.status === "perfect").length
       const manualReview = processed.filter(r => r.status !== "perfect").length
-      
+
       const csvUploadId = await createCSVUpload({
         filename: file.name,
         totalRows: processed.length,
         autoProcessedCount: autoProcessed,
         manualReviewCount: manualReview,
       })
-      
+
       if (csvUploadId) {
         setCurrentCsvUploadId(csvUploadId)
         console.log("CSV upload created with ID:", csvUploadId)
       } else {
         console.error("Failed to create CSV upload record")
       }
-      
+
       setProcessedRows(processed)
       setIsUploadDialogOpen(false)
       setIsReviewDialogOpen(true)
@@ -393,63 +409,68 @@ export default function VerwaltungPage() {
 
   // Handle final confirmation - only process automatic matches, save manual ones
   const handleConfirmTransactions = async () => {
+    setIsConfirming(true)
     const manualReviews: PendingReviewInput[] = []
     let successCount = 0
 
-    for (const row of processedRows) {
-      // Only process automatic matches (perfect status)
-      if (row.status === "perfect" && row.assignedUserId) {
-        // Extract amount from CSV value field
-        const amount = parseFloat(row.value?.replace(",", ".") || "0")
-        
-        if (amount > 0) {
-          const transactionId = await processDeposit({
-            userId: row.assignedUserId,
-            amount,
-            description: `Einzahlung: ${row.referenceSection || row.info.substring(0, 50)}`,
-            date: row.date || new Date().toISOString().split("T")[0],
-            csvUploadId: currentCsvUploadId || undefined,
-          })
-          
-          if (transactionId) {
-            successCount++
-          } else {
-            console.error("Failed to process deposit for user:", row.assignedUserId)
+    try {
+      for (const row of processedRows) {
+        // Only process automatic matches (perfect status)
+        if (row.status === "perfect" && row.assignedUserId) {
+          // Extract amount from CSV value field
+          const amount = parseFloat(row.value?.replace(",", ".") || "0")
+
+          if (amount > 0) {
+            const transactionId = await processDeposit({
+              userId: row.assignedUserId,
+              amount,
+              description: `Einzahlung: ${row.referenceSection || row.info.substring(0, 50)}`,
+              date: row.date || new Date().toISOString().split("T")[0],
+              csvUploadId: currentCsvUploadId || undefined,
+            })
+
+            if (transactionId) {
+              successCount++
+            } else {
+              console.error("Failed to process deposit for user:", row.assignedUserId)
+            }
           }
+        } else {
+          // Save manual review cases for later (to Supabase)
+          manualReviews.push({
+            date: row.date,
+            info: row.info,
+            date2: row.date2,
+            value: row.value,
+            currency: row.currency,
+            timestamp: row.timestamp,
+            extractedMemberIds: row.extractedMemberIds,
+            status: row.status as PendingReviewInput["status"],
+            assignedUserId: row.assignedUserId,
+            referenceSection: row.referenceSection,
+            auftraggeber: row.auftraggeber,
+          })
         }
-      } else {
-        // Save manual review cases for later (to Supabase)
-        manualReviews.push({
-          date: row.date,
-          info: row.info,
-          date2: row.date2,
-          value: row.value,
-          currency: row.currency,
-          timestamp: row.timestamp,
-          extractedMemberIds: row.extractedMemberIds,
-          status: row.status as PendingReviewInput["status"],
-          assignedUserId: row.assignedUserId,
-          referenceSection: row.referenceSection,
-          auftraggeber: row.auftraggeber,
-        })
       }
-    }
 
-    // Save manual review cases to Supabase
-    if (manualReviews.length > 0) {
-      await addPendingReviews(manualReviews)
-      // Refresh pending cases
-      const updatedCases = await getPendingReviews()
-      setPendingCases(updatedCases)
-      setCurrentPendingIndex(0)
-    }
+      // Save manual review cases to Supabase
+      if (manualReviews.length > 0) {
+        await addPendingReviews(manualReviews)
+        // Refresh pending cases
+        const updatedCases = await getPendingReviews()
+        setPendingCases(updatedCases)
+        setCurrentPendingIndex(0)
+      }
 
-    setIsReviewDialogOpen(false)
-    if (successCount > 0) {
-      setIsConfirmDialogOpen(true)
+      setIsReviewDialogOpen(false)
+      if (successCount > 0) {
+        setIsConfirmDialogOpen(true)
+      }
+      setProcessedRows([])
+      setCurrentCsvUploadId(null) // Reset CSV upload ID after processing
+    } finally {
+      setIsConfirming(false)
     }
-    setProcessedRows([])
-    setCurrentCsvUploadId(null) // Reset CSV upload ID after processing
   }
 
   // Get current pending case
@@ -460,25 +481,25 @@ export default function VerwaltungPage() {
     if (!currentPendingCase) return
     const caseId = currentPendingCase.id
     const previousAssignedUserId = currentPendingCase.assignedUserId
-    
+
     // Update local state FIRST for instant UI feedback
-    setPendingCases(prevCases => 
-      prevCases.map(caseItem => 
-        caseItem.id === caseId 
+    setPendingCases(prevCases =>
+      prevCases.map(caseItem =>
+        caseItem.id === caseId
           ? { ...caseItem, assignedUserId: userId }
           : caseItem
       )
     )
-    
+
     // Then update in database in the background
     try {
       await updatePendingReview(caseId, { assignedUserId: userId })
     } catch (err) {
       console.error("Error updating pending review:", err)
       // Revert optimistic update on error
-      setPendingCases(prevCases => 
-        prevCases.map(caseItem => 
-          caseItem.id === caseId 
+      setPendingCases(prevCases =>
+        prevCases.map(caseItem =>
+          caseItem.id === caseId
             ? { ...caseItem, assignedUserId: previousAssignedUserId }
             : caseItem
         )
@@ -497,7 +518,7 @@ export default function VerwaltungPage() {
 
     // Extract amount from CSV value field
     const amount = parseFloat(currentPendingCase.value?.replace(",", ".") || "0")
-    
+
     if (amount <= 0) {
       alert("Ungültiger Betrag")
       setIsProcessingPending(false)
@@ -515,7 +536,7 @@ export default function VerwaltungPage() {
     if (transactionId) {
       // Save to history before deleting
       await saveProcessedReviewToHistory(currentPendingCase, transactionId)
-      
+
       await deletePendingReview(currentPendingCase.id)
       const updatedCases = await getPendingReviews()
       setPendingCases(updatedCases)
@@ -527,6 +548,182 @@ export default function VerwaltungPage() {
     }
 
     setIsProcessingPending(false)
+  }
+
+  // Handle processing split transaction
+  const handleProcessSplitPending = async () => {
+    if (!currentPendingCase) return
+
+    // Validate split entries
+    const totalAmount = parseFloat(currentPendingCase.value?.replace(",", ".") || "0")
+    const splitTotal = splitEntries.reduce((sum, entry) => sum + entry.amount, 0)
+
+    // Allow small floating point diff
+    if (Math.abs(totalAmount - splitTotal) > 0.01) {
+      alert(`Die Summe der Aufteilungen (${splitTotal.toFixed(2)}€) stimmt nicht mit dem Gesamtbetrag (${totalAmount.toFixed(2)}€) überein.`)
+      return
+    }
+
+    if (splitEntries.some(e => !e.userId)) {
+      alert("Bitte allen Einträgen einen Benutzer zuordnen.")
+      return
+    }
+
+    setIsProcessingPending(true)
+    let successCount = 0
+
+    try {
+      // Process each split entry as a separate deposit
+      const validEntries = splitEntries.filter(e => e.amount > 0)
+
+      for (let i = 0; i < validEntries.length; i++) {
+        const entry = validEntries[i]
+
+        // Add delay between requests to avoid rate limiting (skip first)
+        if (i > 0) {
+          await new Promise(resolve => setTimeout(resolve, 500))
+        }
+
+        try {
+          const transactionId = await processDeposit({
+            userId: entry.userId,
+            amount: entry.amount,
+            description: `Einzahlung (Teilbetrag): ${currentPendingCase.referenceSection || currentPendingCase.info.substring(0, 50)}`,
+            date: currentPendingCase.date || new Date().toISOString().split("T")[0],
+            csvUploadId: undefined,
+          })
+
+          if (transactionId) {
+            const splitCase: PendingManualReview = {
+              ...currentPendingCase,
+              assignedUserId: entry.userId,
+              value: entry.amount.toFixed(2),
+            }
+
+            await saveProcessedReviewToHistory(splitCase, transactionId)
+            successCount++
+          }
+        } catch (entryError) {
+          console.error(`Error processing split entry ${i + 1}:`, entryError)
+          // Continue with next entry instead of stopping
+        }
+      }
+
+      console.log("Split processing complete:", { successCount, validEntriesLength: validEntries.length })
+
+      if (successCount === validEntries.length && validEntries.length > 0) {
+        // All successful -> delete original pending case
+        console.log("All entries successful, deleting pending review:", currentPendingCase.id)
+        const deleteResult = await deletePendingReview(currentPendingCase.id)
+        console.log("Delete result:", deleteResult)
+
+        const updatedCases = await getPendingReviews()
+        console.log("Updated pending cases count:", updatedCases.length)
+        setPendingCases(updatedCases)
+        setCurrentPendingIndex(0)
+        setPendingSearchQuery("")
+        setIsSplitMode(false)
+        setSplitEntries([])
+      } else {
+        alert("Fehler bei der Verarbeitung einiger Teilbeträge. Bitte prüfen Sie den Verlauf.")
+        // Refresh anyway to be safe
+        const updatedCases = await getPendingReviews()
+        setPendingCases(updatedCases)
+      }
+    } catch (error) {
+      console.error("Error in split processing:", error)
+      alert("Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.")
+    } finally {
+      setIsProcessingPending(false)
+    }
+  }
+
+  // Helper to distribute amount evenly
+  const distributeAmounts = (entries: SplitEntry[], total: number): SplitEntry[] => {
+    if (entries.length === 0) return entries
+
+    const count = entries.length
+    const baseAmount = Math.floor((total / count) * 100) / 100 // round down to 2 decimals
+    let remainder = Math.round((total - (baseAmount * count)) * 100) / 100
+
+    return entries.map((entry, index) => {
+      // Add remainder to the first entries
+      let amount = baseAmount
+      if (remainder > 0.001) {
+        amount += 0.01
+        remainder -= 0.01
+      }
+      return { ...entry, amount: parseFloat(amount.toFixed(2)) }
+    })
+  }
+
+  // Manage Split Entries
+  const addSplitEntry = () => {
+    const total = parseFloat(currentPendingCase?.value?.replace(",", ".") || "0")
+
+    setSplitEntries(prev => {
+      const newEntries = [...prev, {
+        id: Math.random().toString(36).substr(2, 9),
+        userId: "",
+        amount: 0,
+        searchQuery: "",
+        isSearchOpen: false
+      }]
+      return distributeAmounts(newEntries, total)
+    })
+  }
+
+  const removeSplitEntry = (id: string) => {
+    const total = parseFloat(currentPendingCase?.value?.replace(",", ".") || "0")
+    setSplitEntries(prev => {
+      const remaining = prev.filter(e => e.id !== id)
+      return distributeAmounts(remaining, total)
+    })
+  }
+
+  const updateSplitEntry = (id: string, updates: Partial<SplitEntry>) => {
+    setSplitEntries(prev => prev.map(e => e.id === id ? { ...e, ...updates } : e))
+  }
+
+  // Initialize split entries when toggling mode
+  const toggleSplitMode = () => {
+    if (!isSplitMode && currentPendingCase) {
+      // Init with 2 empty entries or current assignment + 1 empty
+      const total = parseFloat(currentPendingCase.value?.replace(",", ".") || "0")
+      const existingUser = currentPendingCase.assignedUserId
+
+      const initialEntries: SplitEntry[] = []
+      if (existingUser) {
+        const user = users.find(u => u.id === existingUser)
+        initialEntries.push({
+          id: Math.random().toString(36).substr(2, 9),
+          userId: existingUser,
+          amount: 0, // will be calculated
+          searchQuery: user ? `${user.name} (ID: ${user.memberId})` : "",
+          isSearchOpen: false
+        })
+      } else {
+        initialEntries.push({
+          id: Math.random().toString(36).substr(2, 9),
+          userId: "",
+          amount: 0, // will be calculated
+          searchQuery: "",
+          isSearchOpen: false
+        })
+      }
+
+      // Add second entry for splitting
+      initialEntries.push({
+        id: Math.random().toString(36).substr(2, 9),
+        userId: "",
+        amount: 0, // will be calculated
+        searchQuery: "",
+        isSearchOpen: false
+      })
+
+      setSplitEntries(distributeAmounts(initialEntries, total))
+    }
+    setIsSplitMode(!isSplitMode)
   }
 
   // Skip current pending case (move to next without processing)
@@ -571,7 +768,7 @@ export default function VerwaltungPage() {
       {/* Header */}
       <div className="pt-2 flex items-center justify-between">
         <div>
-        <h1 className="text-2xl font-bold">Verwaltung</h1>
+          <h1 className="text-2xl font-bold">Verwaltung</h1>
           <p className="text-muted-foreground">Kontoauszüge verarbeiten</p>
         </div>
         <div className="flex gap-2">
@@ -628,141 +825,255 @@ export default function VerwaltungPage() {
               </CardContent>
             </Card>
           ) : (
-      <Card>
-        <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5 text-orange-500" />
-                Manuelle Überprüfung
-              </CardTitle>
-              <Badge variant="secondary">
-                {currentPendingIndex + 1} / {pendingCases.length}
-              </Badge>
-            </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-            {currentPendingCase && (
-              <>
-                {/* Status Badge */}
-                <Badge variant="outline" className="mb-2">
-                  {getStatusExplanation(currentPendingCase.status)}
-                </Badge>
-
-                {/* Transaction Details */}
-                <div className="bg-muted p-4 rounded-lg space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Datum:</span>
-                    <span className="font-medium">{currentPendingCase.date || "Nicht angegeben"}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Betrag:</span>
-                    <span className="font-medium text-green-600">
-                      {currentPendingCase.value || "0"} {currentPendingCase.currency || "EUR"}
-                    </span>
-                  </div>
-                  <div className="text-sm">
-                    <span className="text-muted-foreground">Auftraggeber:</span>
-                    <p className="font-medium mt-1">{currentPendingCase.auftraggeber}</p>
-                  </div>
-                  <div className="text-sm">
-                    <span className="text-muted-foreground">Verwendungszweck:</span>
-                    <p className="font-medium mt-1">{currentPendingCase.referenceSection}</p>
-                  </div>
-                  {currentPendingCase.extractedMemberIds.length > 0 && (
-                    <div className="text-sm">
-                      <span className="text-muted-foreground">Gefundene IDs:</span>
-                      <p className="font-medium mt-1">{currentPendingCase.extractedMemberIds.join(", ")}</p>
-                    </div>
-                  )}
-          </div>
-
-                {/* User Assignment */}
-          <div className="space-y-2">
-                  <label className="text-sm font-medium">Benutzer zuordnen</label>
-                  <div className="relative" ref={pendingSearchRef}>
-                    <div
-                      className="flex items-center gap-2 h-12 px-3 border rounded-md cursor-pointer hover:bg-accent"
-                      onClick={() => setIsPendingSearchOpen(!isPendingSearchOpen)}
+            <Card>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-orange-500" />
+                    Manuelle Überprüfung
+                  </CardTitle>
+                  <Badge variant="secondary">
+                    {currentPendingIndex + 1} / {pendingCases.length}
+                  </Badge>
+                </div>
+                {currentPendingCase && (
+                  <div className="flex justify-end pt-2">
+                    <Button
+                      variant={isSplitMode ? "secondary" : "ghost"}
+                      size="sm"
+                      onClick={toggleSplitMode}
+                      className="gap-2 text-xs h-8"
                     >
-                      <Search className="h-4 w-4 text-muted-foreground" />
-            <Input
-                        value={pendingSearchQuery}
-                        onChange={(e) => {
-                          setPendingSearchQuery(e.target.value)
-                          setIsPendingSearchOpen(true)
-                        }}
-                        placeholder="Nach Name oder ID suchen..."
-                        className="border-0 h-auto p-0 focus-visible:ring-0"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setIsPendingSearchOpen(true)
-                        }}
-                      />
-                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
-          </div>
+                      <Split className="h-3.5 w-3.5" />
+                      {isSplitMode ? "Aufteilen deaktivieren" : "Transaktion aufteilen"}
+                    </Button>
+                  </div>
+                )}
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {currentPendingCase && (
+                  <>
+                    {/* Status Badge */}
+                    <Badge variant="outline" className="mb-2">
+                      {getStatusExplanation(currentPendingCase.status)}
+                    </Badge>
 
-                    {isPendingSearchOpen && (
-                      <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-60 overflow-auto">
-                        {getFilteredUsers(pendingSearchQuery).map((user) => (
+                    {/* Transaction Details */}
+                    <div className="bg-muted p-4 rounded-lg space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Datum:</span>
+                        <span className="font-medium">{currentPendingCase.date || "Nicht angegeben"}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Betrag:</span>
+                        <span className="font-medium text-green-600">
+                          {currentPendingCase.value || "0"} {currentPendingCase.currency || "EUR"}
+                        </span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="text-muted-foreground">Auftraggeber:</span>
+                        <p className="font-medium mt-1">{currentPendingCase.auftraggeber}</p>
+                      </div>
+                      <div className="text-sm">
+                        <span className="text-muted-foreground">Verwendungszweck:</span>
+                        <p className="font-medium mt-1">{currentPendingCase.referenceSection}</p>
+                      </div>
+                      {currentPendingCase.extractedMemberIds.length > 0 && (
+                        <div className="text-sm">
+                          <span className="text-muted-foreground">Gefundene IDs:</span>
+                          <p className="font-medium mt-1">{currentPendingCase.extractedMemberIds.join(", ")}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* User Assignment */}
+                    {/* User Assignment OR Split View */}
+                    {!isSplitMode ? (
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">Benutzer zuordnen</label>
+                        <div className="relative" ref={pendingSearchRef}>
                           <div
-                            key={user.id}
-                            className={`px-3 py-2 cursor-pointer hover:bg-accent ${
-                              currentPendingCase.assignedUserId === user.id ? "bg-accent" : ""
-                            }`}
-                            onClick={() => {
-                              handleAssignPendingUser(user.id)
-                              setPendingSearchQuery(user.name)
-                              setIsPendingSearchOpen(false)
-                            }}
+                            className="flex items-center gap-2 h-12 px-3 border rounded-md cursor-pointer hover:bg-accent"
+                            onClick={() => setIsPendingSearchOpen(!isPendingSearchOpen)}
                           >
-                            <div className="font-medium">{user.name}</div>
-                            <div className="text-xs text-muted-foreground">ID: {user.memberId}</div>
-          </div>
-                        ))}
-                        {getFilteredUsers(pendingSearchQuery).length === 0 && (
-                          <div className="px-3 py-2 text-muted-foreground text-sm">
-                            Keine Benutzer gefunden
-          </div>
-                        )}
-              </div>
-                )}
-              </div>
-                  
-                  {currentPendingCase.assignedUserId && (
-                    <p className="text-sm text-green-600">
-                      ✓ Zugeordnet: {users.find(u => u.id === currentPendingCase.assignedUserId)?.name}
-                    </p>
-                )}
-              </div>
+                            <Search className="h-4 w-4 text-muted-foreground" />
+                            <Input
+                              value={pendingSearchQuery}
+                              onChange={(e) => {
+                                setPendingSearchQuery(e.target.value)
+                                setIsPendingSearchOpen(true)
+                              }}
+                              placeholder="Nach Name oder ID suchen..."
+                              className="border-0 h-auto p-0 focus-visible:ring-0"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                setIsPendingSearchOpen(true)
+                              }}
+                            />
+                            <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                          </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-2 pt-2">
-                  <Button
-                    onClick={handleProcessCurrentPending}
-                    disabled={!currentPendingCase.assignedUserId || isProcessingPending}
-                    className="flex-1 h-12 gap-2"
-                  >
-                    {isProcessingPending ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                          {isPendingSearchOpen && (
+                            <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-60 overflow-auto">
+                              {getFilteredUsers(pendingSearchQuery).map((user) => (
+                                <div
+                                  key={user.id}
+                                  className={`px-3 py-2 cursor-pointer hover:bg-accent ${currentPendingCase.assignedUserId === user.id ? "bg-accent" : ""
+                                    }`}
+                                  onClick={() => {
+                                    handleAssignPendingUser(user.id)
+                                    setPendingSearchQuery(user.name)
+                                    setIsPendingSearchOpen(false)
+                                  }}
+                                >
+                                  <div className="font-medium">{user.name}</div>
+                                  <div className="text-xs text-muted-foreground">ID: {user.memberId}</div>
+                                </div>
+                              ))}
+                              {getFilteredUsers(pendingSearchQuery).length === 0 && (
+                                <div className="px-3 py-2 text-muted-foreground text-sm">
+                                  Keine Benutzer gefunden
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
+                        {currentPendingCase.assignedUserId && (
+                          <p className="text-sm text-green-600">
+                            ✓ Zugeordnet: {users.find(u => u.id === currentPendingCase.assignedUserId)?.name}
+                          </p>
+                        )}
+                      </div>
                     ) : (
-                      <CheckCircle2 className="h-4 w-4" />
+                      /* SPLIT MODE UI */
+                      <div className="space-y-3 border rounded-lg p-3 bg-muted/20">
+                        <div className="flex justify-between items-center mb-1">
+                          <label className="text-sm font-medium">Aufteilung</label>
+                          <div className="text-xs text-muted-foreground">
+                            Gesamt: <span className="font-bold">{currentPendingCase.value} {currentPendingCase.currency}</span>
+                          </div>
+                        </div>
+
+                        {splitEntries.map((entry, idx) => (
+                          <div key={entry.id} className="flex gap-2 items-start">
+                            <div className="flex-1 relative">
+                              <div className="relative">
+                                <Input
+                                  value={entry.searchQuery}
+                                  onChange={(e) => {
+                                    updateSplitEntry(entry.id, {
+                                      searchQuery: e.target.value,
+                                      isSearchOpen: true
+                                    })
+                                  }}
+                                  placeholder="Benutzer suchen..."
+                                  className="h-9"
+                                  onFocus={() => updateSplitEntry(entry.id, { isSearchOpen: true })}
+                                />
+                                {entry.userId && (
+                                  <div className="absolute right-2 top-1/2 -translate-y-1/2 text-green-600 pointer-events-none">
+                                    <CheckCircle2 className="h-4 w-4" />
+                                  </div>
+                                )}
+                              </div>
+
+                              {entry.isSearchOpen && (
+                                <div className="absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-40 overflow-auto">
+                                  {getFilteredUsers(entry.searchQuery).map((user) => (
+                                    <div
+                                      key={user.id}
+                                      className={`px-3 py-2 cursor-pointer hover:bg-accent text-sm ${entry.userId === user.id ? "bg-accent" : ""
+                                        }`}
+                                      onClick={() => {
+                                        updateSplitEntry(entry.id, {
+                                          userId: user.id,
+                                          searchQuery: `${user.name} (ID: ${user.memberId})`,
+                                          isSearchOpen: false
+                                        })
+                                      }}
+                                    >
+                                      <div className="font-medium">{user.name}</div>
+                                      <div className="text-xs text-muted-foreground">ID: {user.memberId}</div>
+                                    </div>
+                                  ))}
+                                  {getFilteredUsers(entry.searchQuery).length === 0 && (
+                                    <div className="px-3 py-2 text-xs text-muted-foreground">Keine Treffer</div>
+                                  )}
+                                  {/* Close overlay on outside click needs handling, but simple blur might be tricky avoiding selection. 
+                                            We rely on user selecting or just closing the split view for now or clicking another field.*/}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="w-24">
+                              <Input
+                                type="number"
+                                value={entry.amount}
+                                onChange={(e) => updateSplitEntry(entry.id, { amount: parseFloat(e.target.value) || 0 })}
+                                className="h-9"
+                                min="0"
+                                step="0.01"
+                              />                        </div>
+
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-9 w-9 text-muted-foreground hover:text-red-500"
+                              onClick={() => removeSplitEntry(entry.id)}
+                              disabled={splitEntries.length <= 1}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        ))}
+
+                        <div className="flex justify-between items-center pt-2">
+                          <Button variant="outline" size="sm" onClick={addSplitEntry} className="gap-1 h-8">
+                            <Plus className="h-3 w-3" /> Eintrag
+                          </Button>
+
+                          <div className="text-sm">
+                            Summe: <span className={
+                              Math.abs(splitEntries.reduce((s, e) => s + e.amount, 0) - parseFloat(currentPendingCase.value?.replace(",", ".") || "0")) < 0.01
+                                ? "text-green-600 font-bold"
+                                : "text-red-500 font-bold"
+                            }>
+                              {splitEntries.reduce((s, e) => s + e.amount, 0).toFixed(2)}€
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     )}
-                    Verarbeiten
-                  </Button>
-                  <Button
-                    onClick={handleSkipCurrentPending}
-                    variant="outline"
-                    className="h-12 gap-2"
-                    disabled={pendingCases.length <= 1}
-                  >
-                    <SkipForward className="h-4 w-4" />
-                    Überspringen
-                  </Button>
-        </div>
-              </>
-            )}
-          </CardContent>
-        </Card>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2 pt-2">
+                      <Button
+                        onClick={isSplitMode ? handleProcessSplitPending : handleProcessCurrentPending}
+                        disabled={isProcessingPending || (isSplitMode ? false : !currentPendingCase.assignedUserId)}
+                        className="flex-1 h-12 gap-2"
+                      >
+                        {isProcessingPending ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <CheckCircle2 className="h-4 w-4" />
+                        )}
+                        Verarbeiten
+                      </Button>
+                      <Button
+                        onClick={handleSkipCurrentPending}
+                        variant="outline"
+                        className="h-12 gap-2"
+                        disabled={pendingCases.length <= 1}
+                      >
+                        <SkipForward className="h-4 w-4" />
+                        Überspringen
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </CardContent>
+            </Card>
           )}
         </>
       ) : (
@@ -1070,8 +1381,15 @@ export default function VerwaltungPage() {
             <Button variant="outline" onClick={() => setIsReviewDialogOpen(false)} className="flex-1">
               Abbrechen
             </Button>
-            <Button onClick={handleConfirmTransactions} className="flex-1">
-              Bestätigen
+            <Button onClick={handleConfirmTransactions} className="flex-1" disabled={isConfirming}>
+              {isConfirming ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Verarbeite...
+                </>
+              ) : (
+                "Bestätigen"
+              )}
             </Button>
           </div>
         </DialogContent>

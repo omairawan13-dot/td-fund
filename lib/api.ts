@@ -3,7 +3,7 @@ import { type User, type Case, type Transaction, type PendingManualReview, type 
 
 export async function getUsers(): Promise<User[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("users")
     .select("*")
@@ -41,7 +41,7 @@ export async function updateUser(id: string, updates: Partial<User>): Promise<bo
 
   // Map User interface fields back to database columns if needed
   const dbUpdates: any = {}
-  
+
   if (updates.name !== undefined) dbUpdates.name = updates.name
   if (updates.email !== undefined) dbUpdates.email = updates.email
   if (updates.role !== undefined) dbUpdates.role = updates.role
@@ -53,7 +53,7 @@ export async function updateUser(id: string, updates: Partial<User>): Promise<bo
   if (updates.avatar !== undefined) dbUpdates.image_url = updates.avatar
   if (updates.inactive !== undefined) dbUpdates.inactive = updates.inactive
   if (updates.status !== undefined) dbUpdates.status = updates.status
-  
+
   // Exclude fields that shouldn't be updated directly via this generic function if any
   delete dbUpdates.id
   delete dbUpdates.mitgliedsnummer
@@ -75,7 +75,7 @@ export async function updateUser(id: string, updates: Partial<User>): Promise<bo
 
 export async function createCase(data: { title: string; description: string; fee: number }): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase.rpc('create_case', {
     case_title: data.title,
     case_description: data.description,
@@ -92,7 +92,7 @@ export async function createCase(data: { title: string; description: string; fee
 
 export async function getCases(): Promise<Case[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("cases")
     .select("*")
@@ -114,12 +114,12 @@ export async function getCases(): Promise<Case[]> {
 
 export async function getTransactions(userId?: string): Promise<Transaction[]> {
   const supabase = createClient()
-  
+
   let query = supabase
     .from("transactions")
     .select("*")
     .order("created_at", { ascending: false })
-    
+
   if (userId) {
     query = query.eq("user_id", userId)
   }
@@ -142,15 +142,15 @@ export async function getTransactions(userId?: string): Promise<Transaction[]> {
   }))
 }
 
-export async function processDeposit(data: { 
-  userId: string; 
-  amount: number; 
-  description: string; 
+export async function processDeposit(data: {
+  userId: string;
+  amount: number;
+  description: string;
   date: string;
   csvUploadId?: string;
 }): Promise<string | null> {
   const supabase = createClient()
-  
+
   const { data: result, error } = await supabase.rpc('process_deposit', {
     p_user_id: data.userId,
     p_amount: data.amount,
@@ -187,7 +187,7 @@ export interface PendingReviewInput {
 
 export async function getPendingReviews(): Promise<PendingManualReview[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("pending_reviews")
     .select("*")
@@ -219,7 +219,7 @@ export async function getPendingReviews(): Promise<PendingManualReview[]> {
 
 export async function addPendingReviews(reviews: PendingReviewInput[]): Promise<boolean> {
   const supabase = createClient()
-  
+
   const dbReviews = reviews.map((r) => ({
     date: r.date,
     info: r.info,
@@ -248,7 +248,7 @@ export async function addPendingReviews(reviews: PendingReviewInput[]): Promise<
 
 export async function updatePendingReview(id: string, updates: { assignedUserId?: string }): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("pending_reviews")
     .update({ assigned_user_id: updates.assignedUserId || null })
@@ -264,7 +264,7 @@ export async function updatePendingReview(id: string, updates: { assignedUserId?
 
 export async function deletePendingReview(id: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("pending_reviews")
     .delete()
@@ -284,10 +284,10 @@ export async function saveProcessedReviewToHistory(
   transactionId?: string
 ): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get current user
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   const { error } = await supabase
     .from("processed_reviews_history")
     .insert({
@@ -318,7 +318,7 @@ export async function saveProcessedReviewToHistory(
 // Get processed reviews history
 export async function getProcessedReviewsHistory(): Promise<any[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("processed_reviews_history")
     .select(`
@@ -354,10 +354,10 @@ export interface CSVUploadInput {
 
 export async function createCSVUpload(data: CSVUploadInput): Promise<string | null> {
   const supabase = createClient()
-  
+
   // Get current user
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   const { data: result, error } = await supabase
     .from("csv_uploads")
     .insert({
@@ -385,7 +385,7 @@ export async function createCSVUpload(data: CSVUploadInput): Promise<string | nu
 
 export async function getCSVUploads(): Promise<any[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("csv_uploads")
     .select(`
@@ -421,7 +421,7 @@ export async function getCSVUploads(): Promise<any[]> {
 
 export async function getNewsPosts(): Promise<NewsPost[]> {
   const supabase = createClient()
-  
+
   // Order by pinned first, then by created_at descending
   const { data, error } = await supabase
     .from("news_posts")
@@ -446,18 +446,18 @@ export async function getNewsPosts(): Promise<NewsPost[]> {
   }))
 }
 
-export async function createNewsPost(data: { 
-  title: string; 
-  content: string; 
+export async function createNewsPost(data: {
+  title: string;
+  content: string;
   excerpt: string;
   isPinned?: boolean;
   bannerImageUrl?: string;
 }): Promise<string | null> {
   const supabase = createClient()
-  
+
   // Get current user
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   const { data: result, error } = await supabase
     .from("news_posts")
     .insert({
@@ -479,30 +479,30 @@ export async function createNewsPost(data: {
   return result?.id || null
 }
 
-export async function updateNewsPost(id: string, data: { 
-  title: string; 
-  content: string; 
+export async function updateNewsPost(id: string, data: {
+  title: string;
+  content: string;
   excerpt: string;
   isPinned?: boolean;
   bannerImageUrl?: string;
 }): Promise<boolean> {
   const supabase = createClient()
-  
+
   const updateData: any = {
     title: data.title,
     content: data.content,
     excerpt: data.excerpt,
     updated_at: new Date().toISOString(),
   }
-  
+
   if (data.isPinned !== undefined) {
     updateData.is_pinned = data.isPinned
   }
-  
+
   if (data.bannerImageUrl !== undefined) {
     updateData.banner_image_url = data.bannerImageUrl
   }
-  
+
   const { error } = await supabase
     .from("news_posts")
     .update(updateData)
@@ -518,7 +518,7 @@ export async function updateNewsPost(id: string, data: {
 
 export async function deleteNewsPost(id: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("news_posts")
     .delete()
@@ -538,27 +538,27 @@ export async function deleteNewsPost(id: string): Promise<boolean> {
 
 export async function uploadUserImage(userId: string, file: File): Promise<string | null> {
   const supabase = createClient()
-  
+
   // Validate file type
   const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
   if (!validTypes.includes(file.type)) {
     console.error("Invalid file type. Only JPEG, PNG, and WebP are allowed.")
     return null
   }
-  
+
   // Validate file size (max 5MB)
   const maxSize = 5 * 1024 * 1024 // 5MB
   if (file.size > maxSize) {
     console.error("File size exceeds 5MB limit.")
     return null
   }
-  
+
   // Generate unique filename: userId-timestamp.extension
   const timestamp = Date.now()
   const fileExt = file.name.split('.').pop() || 'jpg'
   const fileName = `${userId}-${timestamp}.${fileExt}`
   const filePath = `users/${fileName}`
-  
+
   // Upload file to Supabase Storage
   const { data, error } = await supabase.storage
     .from('images')
@@ -566,66 +566,66 @@ export async function uploadUserImage(userId: string, file: File): Promise<strin
       cacheControl: '3600',
       upsert: false
     })
-  
+
   if (error) {
     console.error("Error uploading image:", error)
     return null
   }
-  
+
   // Get public URL
   const { data: urlData } = supabase.storage
     .from('images')
     .getPublicUrl(filePath)
-  
+
   return urlData.publicUrl || null
 }
 
 export async function deleteUserImage(imageUrl: string): Promise<boolean> {
   if (!imageUrl) return true // Nothing to delete
-  
+
   const supabase = createClient()
-  
+
   // Extract file path from URL
   // URL format: https://[project].supabase.co/storage/v1/object/public/images/users/filename.jpg
   const urlParts = imageUrl.split('/')
   const fileName = urlParts[urlParts.length - 1]
   const filePath = `users/${fileName}`
-  
+
   const { error } = await supabase.storage
     .from('images')
     .remove([filePath])
-  
+
   if (error) {
     console.error("Error deleting image:", error)
     return false
   }
-  
+
   return true
 }
 
 export async function uploadNewsBannerImage(newsId: string, file: File): Promise<string | null> {
   const supabase = createClient()
-  
+
   // Validate file type
   const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
   if (!validTypes.includes(file.type)) {
     console.error("Invalid file type. Only JPEG, PNG, and WebP are allowed.")
     return null
   }
-  
+
   // Validate file size (max 5MB)
   const maxSize = 5 * 1024 * 1024 // 5MB
   if (file.size > maxSize) {
     console.error("File size exceeds 5MB limit.")
     return null
   }
-  
+
   // Generate unique filename: newsId-timestamp.extension
   const timestamp = Date.now()
   const fileExt = file.name.split('.').pop() || 'jpg'
   const fileName = `${newsId}-${timestamp}.${fileExt}`
   const filePath = `news/${fileName}`
-  
+
   // Upload file to Supabase Storage
   const { data, error } = await supabase.storage
     .from('images')
@@ -633,40 +633,40 @@ export async function uploadNewsBannerImage(newsId: string, file: File): Promise
       cacheControl: '3600',
       upsert: false
     })
-  
+
   if (error) {
     console.error("Error uploading news banner image:", error)
     return null
   }
-  
+
   // Get public URL
   const { data: urlData } = supabase.storage
     .from('images')
     .getPublicUrl(filePath)
-  
+
   return urlData.publicUrl || null
 }
 
 export async function deleteNewsBannerImage(imageUrl: string): Promise<boolean> {
   if (!imageUrl) return true // Nothing to delete
-  
+
   const supabase = createClient()
-  
+
   // Extract file path from URL
   // URL format: https://[project].supabase.co/storage/v1/object/public/images/news/filename.jpg
   const urlParts = imageUrl.split('/')
   const fileName = urlParts[urlParts.length - 1]
   const filePath = `news/${fileName}`
-  
+
   const { error } = await supabase.storage
     .from('images')
     .remove([filePath])
-  
+
   if (error) {
     console.error("Error deleting news banner image:", error)
     return false
   }
-  
+
   return true
 }
 
@@ -689,7 +689,7 @@ export async function calculateDaysInNegativeBalance(userId: string): Promise<{
   firstNegativeDate: string | null
 }> {
   const supabase = createClient()
-  
+
   // Get all transactions for this user, ordered by date (oldest first)
   const { data: transactions, error } = await supabase
     .from("transactions")
@@ -704,7 +704,7 @@ export async function calculateDaysInNegativeBalance(userId: string): Promise<{
       .select("balance")
       .eq("id", userId)
       .single()
-    
+
     if (user && user.balance < 0) {
       // User is negative but no transactions - use created_at as fallback
       const { data: userData } = await supabase
@@ -712,7 +712,7 @@ export async function calculateDaysInNegativeBalance(userId: string): Promise<{
         .select("created_at")
         .eq("id", userId)
         .single()
-      
+
       if (userData) {
         const days = Math.floor((Date.now() - new Date(userData.created_at).getTime()) / (1000 * 60 * 60 * 24))
         return { daysInNegative: days, firstNegativeDate: userData.created_at }
@@ -727,12 +727,12 @@ export async function calculateDaysInNegativeBalance(userId: string): Promise<{
 
   for (const transaction of transactions) {
     runningBalance += parseFloat(transaction.amount.toString())
-    
+
     // If balance becomes negative and we haven't found the first negative date yet
     if (runningBalance < 0 && firstNegativeDate === null) {
       firstNegativeDate = transaction.created_at
     }
-    
+
     // If balance becomes positive again, reset tracking
     if (runningBalance >= 0) {
       firstNegativeDate = null
@@ -769,7 +769,7 @@ export async function calculateDaysInNegativeBalance(userId: string): Promise<{
 
 export async function getUsersWithNegativeBalance(): Promise<UserWithNegativeDays[]> {
   const supabase = createClient()
-  
+
   // Get all users with negative balance
   const { data: users, error } = await supabase
     .from("users")
@@ -787,7 +787,7 @@ export async function getUsersWithNegativeBalance(): Promise<UserWithNegativeDay
     users.map(async (user) => {
       const { daysInNegative, firstNegativeDate } = await calculateDaysInNegativeBalance(user.id)
       const daysRemaining = Math.max(0, 90 - daysInNegative)
-      
+
       return {
         id: user.id,
         email: user.email,
@@ -828,16 +828,16 @@ export async function getUsersSortedByNegativeDays(): Promise<UserWithNegativeDa
 
 export async function markUsersInactiveAfter90Days(): Promise<number> {
   const supabase = createClient()
-  
+
   const users90Days = await getUsersWithNegativeBalance()
   const usersToMark = users90Days.filter((user) => user.daysInNegative >= 90)
-  
+
   if (usersToMark.length === 0) {
     return 0
   }
 
   const userIds = usersToMark.map((u) => u.id)
-  
+
   const { error } = await supabase
     .from("users")
     .update({ inactive: true })
@@ -908,7 +908,7 @@ export async function sendManualReminderEmail(userId: string, customMessage?: st
  */
 export async function getEmailHistory(userId: string): Promise<EmailNotification[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("email_notifications")
     .select("*")
@@ -983,7 +983,7 @@ export async function checkAndSendAutomaticEmails(): Promise<{
         // Send 30-day email if needed
         if (userInfo.needs_30_day_email) {
           const result = await send30DayWarning(emailUser)
-          
+
           // Record email
           await supabase.from("email_notifications").insert({
             user_id: userInfo.user_id,
@@ -1008,7 +1008,7 @@ export async function checkAndSendAutomaticEmails(): Promise<{
         // Send 90-day email if needed
         if (userInfo.needs_90_day_email) {
           const result = await send90DayWarning(emailUser)
-          
+
           // Record email
           await supabase.from("email_notifications").insert({
             user_id: userInfo.user_id,
@@ -1059,7 +1059,7 @@ export async function getUsersWithAnyNegativeBalance(): Promise<number> {
 
 export async function getPendingUsers(): Promise<User[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("users")
     .select("*")
@@ -1090,7 +1090,7 @@ export async function getPendingUsers(): Promise<User[]> {
 
 export async function approveUser(userId: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get the highest member_id from the database
   const { data: maxMemberData } = await supabase
     .from("users")
@@ -1101,13 +1101,13 @@ export async function approveUser(userId: string): Promise<boolean> {
 
   // Calculate next member_id (start with 1 if no users exist)
   const nextMemberId = maxMemberData && maxMemberData.length > 0 && maxMemberData[0]?.member_id
-    ? (maxMemberData[0].member_id as number) + 1 
+    ? (maxMemberData[0].member_id as number) + 1
     : 1
 
   // Update user status to APPROVED and assign member_id
   const { error: updateError } = await supabase
     .from("users")
-    .update({ 
+    .update({
       status: "APPROVED",
       member_id: nextMemberId
     })
@@ -1153,7 +1153,7 @@ export async function approveUser(userId: string): Promise<boolean> {
 
 export async function rejectUser(userId: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("users")
     .update({ status: "REJECTED" })
@@ -1187,7 +1187,7 @@ export async function createProfileChange(
   changes: Record<string, { old: string; new: string }>
 ): Promise<string | null> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("profile_changes")
     .insert({
@@ -1208,12 +1208,12 @@ export async function createProfileChange(
 
 export async function getProfileChanges(status?: "PENDING" | "ACCEPTED" | "REVERTED"): Promise<ProfileChange[]> {
   const supabase = createClient()
-  
+
   let query = supabase
     .from("profile_changes")
     .select("*")
     .order("created_at", { ascending: false })
-  
+
   if (status) {
     query = query.eq("status", status)
   }
@@ -1243,7 +1243,7 @@ export async function acceptProfileChange(
   notes?: string
 ): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get the profile change
   const { data: profileChange, error: fetchError } = await supabase
     .from("profile_changes")
@@ -1263,7 +1263,7 @@ export async function acceptProfileChange(
     const changeData = value as { old: string; new: string }
     updates[key] = changeData.new
   }
-  
+
   // Map avatar to image_url if present
   if (updates.avatar) {
     updates.image_url = updates.avatar
@@ -1320,7 +1320,7 @@ export async function revertProfileChange(
   notes?: string
 ): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get the profile change
   const { data: profileChange, error: fetchError } = await supabase
     .from("profile_changes")
@@ -1401,7 +1401,7 @@ export async function createBalanceError(
   description?: string
 ): Promise<string | null> {
   const supabase = createClient()
-  
+
   // Get user's current balance
   const { data: userData, error: userError } = await supabase
     .from("users")
@@ -1435,12 +1435,12 @@ export async function createBalanceError(
 
 export async function getBalanceErrors(status?: "OPEN" | "RESOLVED" | "REJECTED"): Promise<BalanceError[]> {
   const supabase = createClient()
-  
+
   let query = supabase
     .from("balance_errors")
     .select("*")
     .order("created_at", { ascending: false })
-  
+
   if (status) {
     query = query.eq("status", status)
   }
@@ -1473,7 +1473,7 @@ export async function resolveBalanceError(
   notes?: string
 ): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get the balance error
   const { data: balanceError, error: fetchError } = await supabase
     .from("balance_errors")
@@ -1562,7 +1562,7 @@ export async function rejectBalanceError(
   notes?: string
 ): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get the balance error
   const { data: balanceError, error: fetchError } = await supabase
     .from("balance_errors")
@@ -1621,7 +1621,7 @@ export interface UserNotification {
 
 export async function getUserNotifications(userId: string): Promise<UserNotification[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("user_notifications")
     .select("*")
@@ -1647,7 +1647,7 @@ export async function getUserNotifications(userId: string): Promise<UserNotifica
 
 export async function markNotificationAsRead(id: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("user_notifications")
     .update({ read: true })
@@ -1669,7 +1669,7 @@ export async function createUserNotification(
   relatedId?: string
 ): Promise<string | null> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("user_notifications")
     .insert({
@@ -1697,10 +1697,10 @@ export async function createUserNotification(
 
 export async function addBulkMemberImports(imports: BulkMemberImportInput[]): Promise<boolean> {
   const supabase = createClient()
-  
+
   // Get current user (admin)
   const { data: { user } } = await supabase.auth.getUser()
-  
+
   const dbImports = imports.map((imp) => ({
     s_number: imp.s_number || null,
     no: imp.no || null,
@@ -1731,7 +1731,7 @@ export async function addBulkMemberImports(imports: BulkMemberImportInput[]): Pr
 
 export async function getBulkMemberImports(): Promise<BulkMemberImport[]> {
   const supabase = createClient()
-  
+
   const { data, error } = await supabase
     .from("bulk_member_imports")
     .select("*")
@@ -1763,7 +1763,7 @@ export async function getBulkMemberImports(): Promise<BulkMemberImport[]> {
 
 export async function updateBulkMemberImport(id: string, updates: Partial<BulkMemberImportInput>): Promise<boolean> {
   const supabase = createClient()
-  
+
   const dbUpdates: any = {}
   if (updates.s_number !== undefined) dbUpdates.s_number = updates.s_number || null
   if (updates.no !== undefined) dbUpdates.no = updates.no || null
@@ -1793,7 +1793,7 @@ export async function updateBulkMemberImport(id: string, updates: Partial<BulkMe
 
 export async function deleteBulkMemberImport(id: string): Promise<boolean> {
   const supabase = createClient()
-  
+
   const { error } = await supabase
     .from("bulk_member_imports")
     .delete()

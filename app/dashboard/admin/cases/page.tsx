@@ -82,9 +82,9 @@ export default function AdminCasesPage() {
       ) : (
       <div className="space-y-4">
         {cases.map((caseItem) => (
-          <Card key={caseItem.id}>
-            <CardHeader>
-              <CardTitle className="text-lg">{caseItem.title}</CardTitle>
+            <Card key={caseItem.id}>
+              <CardHeader>
+                    <CardTitle className="text-lg">{caseItem.title}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {caseItem.description && (
@@ -103,8 +103,8 @@ export default function AdminCasesPage() {
                   })}
                 </p>
               </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
         ))}
       </div>
       )}

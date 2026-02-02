@@ -639,6 +639,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/loader-circle.js [app-client] (ecmascript) <export default as Loader2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$skip$2d$forward$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__SkipForward$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/skip-forward.js [app-client] (ecmascript) <export default as SkipForward>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$history$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__History$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/history.js [app-client] (ecmascript) <export default as History>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$split$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Split$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/split.js [app-client] (ecmascript) <export default as Split>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/plus.js [app-client] (ecmascript) <export default as Plus>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/lib/api.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
@@ -659,6 +662,7 @@ function VerwaltungPage() {
     const [isConfirmDialogOpen, setIsConfirmDialogOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [processedRows, setProcessedRows] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [isProcessing, setIsProcessing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isConfirming, setIsConfirming] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [openSearchIndex, setOpenSearchIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [searchQueries, setSearchQueries] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
     const searchRefs = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])({});
@@ -675,6 +679,9 @@ function VerwaltungPage() {
     const [isLoadingHistory, setIsLoadingHistory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [csvUploads, setCsvUploads] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [currentCsvUploadId, setCurrentCsvUploadId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    // Split functionality state
+    const [isSplitMode, setIsSplitMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [splitEntries, setSplitEntries] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     // Load users and pending cases on mount
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "VerwaltungPage.useEffect": ()=>{
@@ -915,6 +922,9 @@ function VerwaltungPage() {
         try {
             const text = await file.text();
             const rows = parseCSV(text);
+            // reset split mode when New upload happens (optional, but good practice)
+            setIsSplitMode(false);
+            setSplitEntries([]);
             const processed = processCSVRows(rows);
             // Create CSV upload record
             const autoProcessed = processed.filter((r)=>r.status === "perfect").length;
@@ -960,58 +970,63 @@ function VerwaltungPage() {
     };
     // Handle final confirmation - only process automatic matches, save manual ones
     const handleConfirmTransactions = async ()=>{
+        setIsConfirming(true);
         const manualReviews = [];
         let successCount = 0;
-        for (const row of processedRows){
-            // Only process automatic matches (perfect status)
-            if (row.status === "perfect" && row.assignedUserId) {
-                // Extract amount from CSV value field
-                const amount = parseFloat(row.value?.replace(",", ".") || "0");
-                if (amount > 0) {
-                    const transactionId = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["processDeposit"])({
-                        userId: row.assignedUserId,
-                        amount,
-                        description: `Einzahlung: ${row.referenceSection || row.info.substring(0, 50)}`,
-                        date: row.date || new Date().toISOString().split("T")[0],
-                        csvUploadId: currentCsvUploadId || undefined
-                    });
-                    if (transactionId) {
-                        successCount++;
-                    } else {
-                        console.error("Failed to process deposit for user:", row.assignedUserId);
+        try {
+            for (const row of processedRows){
+                // Only process automatic matches (perfect status)
+                if (row.status === "perfect" && row.assignedUserId) {
+                    // Extract amount from CSV value field
+                    const amount = parseFloat(row.value?.replace(",", ".") || "0");
+                    if (amount > 0) {
+                        const transactionId = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["processDeposit"])({
+                            userId: row.assignedUserId,
+                            amount,
+                            description: `Einzahlung: ${row.referenceSection || row.info.substring(0, 50)}`,
+                            date: row.date || new Date().toISOString().split("T")[0],
+                            csvUploadId: currentCsvUploadId || undefined
+                        });
+                        if (transactionId) {
+                            successCount++;
+                        } else {
+                            console.error("Failed to process deposit for user:", row.assignedUserId);
+                        }
                     }
+                } else {
+                    // Save manual review cases for later (to Supabase)
+                    manualReviews.push({
+                        date: row.date,
+                        info: row.info,
+                        date2: row.date2,
+                        value: row.value,
+                        currency: row.currency,
+                        timestamp: row.timestamp,
+                        extractedMemberIds: row.extractedMemberIds,
+                        status: row.status,
+                        assignedUserId: row.assignedUserId,
+                        referenceSection: row.referenceSection,
+                        auftraggeber: row.auftraggeber
+                    });
                 }
-            } else {
-                // Save manual review cases for later (to Supabase)
-                manualReviews.push({
-                    date: row.date,
-                    info: row.info,
-                    date2: row.date2,
-                    value: row.value,
-                    currency: row.currency,
-                    timestamp: row.timestamp,
-                    extractedMemberIds: row.extractedMemberIds,
-                    status: row.status,
-                    assignedUserId: row.assignedUserId,
-                    referenceSection: row.referenceSection,
-                    auftraggeber: row.auftraggeber
-                });
             }
+            // Save manual review cases to Supabase
+            if (manualReviews.length > 0) {
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addPendingReviews"])(manualReviews);
+                // Refresh pending cases
+                const updatedCases = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getPendingReviews"])();
+                setPendingCases(updatedCases);
+                setCurrentPendingIndex(0);
+            }
+            setIsReviewDialogOpen(false);
+            if (successCount > 0) {
+                setIsConfirmDialogOpen(true);
+            }
+            setProcessedRows([]);
+            setCurrentCsvUploadId(null); // Reset CSV upload ID after processing
+        } finally{
+            setIsConfirming(false);
         }
-        // Save manual review cases to Supabase
-        if (manualReviews.length > 0) {
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addPendingReviews"])(manualReviews);
-            // Refresh pending cases
-            const updatedCases = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getPendingReviews"])();
-            setPendingCases(updatedCases);
-            setCurrentPendingIndex(0);
-        }
-        setIsReviewDialogOpen(false);
-        if (successCount > 0) {
-            setIsConfirmDialogOpen(true);
-        }
-        setProcessedRows([]);
-        setCurrentCsvUploadId(null); // Reset CSV upload ID after processing
     };
     // Get current pending case
     const currentPendingCase = pendingCases[currentPendingIndex] || null;
@@ -1074,6 +1089,170 @@ function VerwaltungPage() {
         }
         setIsProcessingPending(false);
     };
+    // Handle processing split transaction
+    const handleProcessSplitPending = async ()=>{
+        if (!currentPendingCase) return;
+        // Validate split entries
+        const totalAmount = parseFloat(currentPendingCase.value?.replace(",", ".") || "0");
+        const splitTotal = splitEntries.reduce((sum, entry)=>sum + entry.amount, 0);
+        // Allow small floating point diff
+        if (Math.abs(totalAmount - splitTotal) > 0.01) {
+            alert(`Die Summe der Aufteilungen (${splitTotal.toFixed(2)}€) stimmt nicht mit dem Gesamtbetrag (${totalAmount.toFixed(2)}€) überein.`);
+            return;
+        }
+        if (splitEntries.some((e)=>!e.userId)) {
+            alert("Bitte allen Einträgen einen Benutzer zuordnen.");
+            return;
+        }
+        setIsProcessingPending(true);
+        let successCount = 0;
+        try {
+            // Process each split entry as a separate deposit
+            const validEntries = splitEntries.filter((e)=>e.amount > 0);
+            for(let i = 0; i < validEntries.length; i++){
+                const entry = validEntries[i];
+                // Add delay between requests to avoid rate limiting (skip first)
+                if (i > 0) {
+                    await new Promise((resolve)=>setTimeout(resolve, 500));
+                }
+                try {
+                    const transactionId = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["processDeposit"])({
+                        userId: entry.userId,
+                        amount: entry.amount,
+                        description: `Einzahlung (Teilbetrag): ${currentPendingCase.referenceSection || currentPendingCase.info.substring(0, 50)}`,
+                        date: currentPendingCase.date || new Date().toISOString().split("T")[0],
+                        csvUploadId: undefined
+                    });
+                    if (transactionId) {
+                        const splitCase = {
+                            ...currentPendingCase,
+                            assignedUserId: entry.userId,
+                            value: entry.amount.toFixed(2)
+                        };
+                        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["saveProcessedReviewToHistory"])(splitCase, transactionId);
+                        successCount++;
+                    }
+                } catch (entryError) {
+                    console.error(`Error processing split entry ${i + 1}:`, entryError);
+                // Continue with next entry instead of stopping
+                }
+            }
+            console.log("Split processing complete:", {
+                successCount,
+                validEntriesLength: validEntries.length
+            });
+            if (successCount === validEntries.length && validEntries.length > 0) {
+                // All successful -> delete original pending case
+                console.log("All entries successful, deleting pending review:", currentPendingCase.id);
+                const deleteResult = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deletePendingReview"])(currentPendingCase.id);
+                console.log("Delete result:", deleteResult);
+                const updatedCases = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getPendingReviews"])();
+                console.log("Updated pending cases count:", updatedCases.length);
+                setPendingCases(updatedCases);
+                setCurrentPendingIndex(0);
+                setPendingSearchQuery("");
+                setIsSplitMode(false);
+                setSplitEntries([]);
+            } else {
+                alert("Fehler bei der Verarbeitung einiger Teilbeträge. Bitte prüfen Sie den Verlauf.");
+                // Refresh anyway to be safe
+                const updatedCases = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getPendingReviews"])();
+                setPendingCases(updatedCases);
+            }
+        } catch (error) {
+            console.error("Error in split processing:", error);
+            alert("Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");
+        } finally{
+            setIsProcessingPending(false);
+        }
+    };
+    // Helper to distribute amount evenly
+    const distributeAmounts = (entries, total)=>{
+        if (entries.length === 0) return entries;
+        const count = entries.length;
+        const baseAmount = Math.floor(total / count * 100) / 100 // round down to 2 decimals
+        ;
+        let remainder = Math.round((total - baseAmount * count) * 100) / 100;
+        return entries.map((entry, index)=>{
+            // Add remainder to the first entries
+            let amount = baseAmount;
+            if (remainder > 0.001) {
+                amount += 0.01;
+                remainder -= 0.01;
+            }
+            return {
+                ...entry,
+                amount: parseFloat(amount.toFixed(2))
+            };
+        });
+    };
+    // Manage Split Entries
+    const addSplitEntry = ()=>{
+        const total = parseFloat(currentPendingCase?.value?.replace(",", ".") || "0");
+        setSplitEntries((prev)=>{
+            const newEntries = [
+                ...prev,
+                {
+                    id: Math.random().toString(36).substr(2, 9),
+                    userId: "",
+                    amount: 0,
+                    searchQuery: "",
+                    isSearchOpen: false
+                }
+            ];
+            return distributeAmounts(newEntries, total);
+        });
+    };
+    const removeSplitEntry = (id)=>{
+        const total = parseFloat(currentPendingCase?.value?.replace(",", ".") || "0");
+        setSplitEntries((prev)=>{
+            const remaining = prev.filter((e)=>e.id !== id);
+            return distributeAmounts(remaining, total);
+        });
+    };
+    const updateSplitEntry = (id, updates)=>{
+        setSplitEntries((prev)=>prev.map((e)=>e.id === id ? {
+                    ...e,
+                    ...updates
+                } : e));
+    };
+    // Initialize split entries when toggling mode
+    const toggleSplitMode = ()=>{
+        if (!isSplitMode && currentPendingCase) {
+            // Init with 2 empty entries or current assignment + 1 empty
+            const total = parseFloat(currentPendingCase.value?.replace(",", ".") || "0");
+            const existingUser = currentPendingCase.assignedUserId;
+            const initialEntries = [];
+            if (existingUser) {
+                const user = users.find((u)=>u.id === existingUser);
+                initialEntries.push({
+                    id: Math.random().toString(36).substr(2, 9),
+                    userId: existingUser,
+                    amount: 0,
+                    searchQuery: user ? `${user.name} (ID: ${user.memberId})` : "",
+                    isSearchOpen: false
+                });
+            } else {
+                initialEntries.push({
+                    id: Math.random().toString(36).substr(2, 9),
+                    userId: "",
+                    amount: 0,
+                    searchQuery: "",
+                    isSearchOpen: false
+                });
+            }
+            // Add second entry for splitting
+            initialEntries.push({
+                id: Math.random().toString(36).substr(2, 9),
+                userId: "",
+                amount: 0,
+                searchQuery: "",
+                isSearchOpen: false
+            });
+            setSplitEntries(distributeAmounts(initialEntries, total));
+        }
+        setIsSplitMode(!isSplitMode);
+    };
     // Skip current pending case (move to next without processing)
     const handleSkipCurrentPending = ()=>{
         if (currentPendingIndex < pendingCases.length - 1) {
@@ -1117,21 +1296,21 @@ function VerwaltungPage() {
                                 children: "Verwaltung"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 574,
-                                columnNumber: 9
+                                lineNumber: 771,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 className: "text-muted-foreground",
                                 children: "Kontoauszüge verarbeiten"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 575,
+                                lineNumber: 772,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 573,
+                        lineNumber: 770,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1150,7 +1329,7 @@ function VerwaltungPage() {
                                                 className: "h-4 w-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 585,
+                                                lineNumber: 782,
                                                 columnNumber: 15
                                             }, this),
                                             "Manuelle Überprüfung",
@@ -1160,13 +1339,13 @@ function VerwaltungPage() {
                                                 children: pendingCases.length
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 588,
+                                                lineNumber: 785,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 579,
+                                        lineNumber: 776,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1179,20 +1358,20 @@ function VerwaltungPage() {
                                                 className: "h-4 w-4"
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 599,
+                                                lineNumber: 796,
                                                 columnNumber: 15
                                             }, this),
                                             "Verlauf"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 593,
+                                        lineNumber: 790,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 578,
+                                lineNumber: 775,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1204,26 +1383,26 @@ function VerwaltungPage() {
                                         className: "h-5 w-5"
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 604,
+                                        lineNumber: 801,
                                         columnNumber: 13
                                     }, this),
                                     "CSV Upload"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 603,
+                                lineNumber: 800,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 577,
+                        lineNumber: 774,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                lineNumber: 572,
+                lineNumber: 769,
                 columnNumber: 7
             }, this),
             viewMode === "pending" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -1234,17 +1413,17 @@ function VerwaltungPage() {
                             className: "h-8 w-8 animate-spin text-muted-foreground"
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 617,
+                            lineNumber: 814,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 616,
+                        lineNumber: 813,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 615,
+                    lineNumber: 812,
                     columnNumber: 13
                 }, this) : pendingCases.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                     className: "border-dashed",
@@ -1255,7 +1434,7 @@ function VerwaltungPage() {
                                 className: "h-12 w-12 mx-auto mb-4 text-green-500"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 623,
+                                lineNumber: 820,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1263,7 +1442,7 @@ function VerwaltungPage() {
                                 children: "Keine offenen Überprüfungen"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 624,
+                                lineNumber: 821,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1271,64 +1450,93 @@ function VerwaltungPage() {
                                 children: "Laden Sie einen Kontoauszug hoch, um Transaktionen zu verarbeiten"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 625,
+                                lineNumber: 822,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 622,
+                        lineNumber: 819,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 621,
+                    lineNumber: 818,
                     columnNumber: 13
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardHeader"], {
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
-                                        className: "flex items-center gap-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex items-center justify-between",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
+                                            className: "flex items-center gap-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__["AlertTriangle"], {
+                                                    className: "h-5 w-5 text-orange-500"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                    lineNumber: 832,
+                                                    columnNumber: 21
+                                                }, this),
+                                                "Manuelle Überprüfung"
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                            lineNumber: 831,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
+                                            variant: "secondary",
+                                            children: [
+                                                currentPendingIndex + 1,
+                                                " / ",
+                                                pendingCases.length
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                            lineNumber: 835,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                    lineNumber: 830,
+                                    columnNumber: 17
+                                }, this),
+                                currentPendingCase && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex justify-end pt-2",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                        variant: isSplitMode ? "secondary" : "ghost",
+                                        size: "sm",
+                                        onClick: toggleSplitMode,
+                                        className: "gap-2 text-xs h-8",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$triangle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertTriangle$3e$__["AlertTriangle"], {
-                                                className: "h-5 w-5 text-orange-500"
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$split$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Split$3e$__["Split"], {
+                                                className: "h-3.5 w-3.5"
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 635,
-                                                columnNumber: 17
+                                                lineNumber: 847,
+                                                columnNumber: 23
                                             }, this),
-                                            "Manuelle Überprüfung"
+                                            isSplitMode ? "Aufteilen deaktivieren" : "Transaktion aufteilen"
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 634,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
-                                        variant: "secondary",
-                                        children: [
-                                            currentPendingIndex + 1,
-                                            " / ",
-                                            pendingCases.length
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 638,
-                                        columnNumber: 15
+                                        lineNumber: 841,
+                                        columnNumber: 21
                                     }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 633,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
+                                }, void 0, false, {
+                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                    lineNumber: 840,
+                                    columnNumber: 19
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 632,
-                            columnNumber: 9
+                            lineNumber: 829,
+                            columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
                             className: "space-y-4",
@@ -1340,8 +1548,8 @@ function VerwaltungPage() {
                                         children: getStatusExplanation(currentPendingCase.status)
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 647,
-                                        columnNumber: 17
+                                        lineNumber: 857,
+                                        columnNumber: 21
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "bg-muted p-4 rounded-lg space-y-2",
@@ -1354,22 +1562,22 @@ function VerwaltungPage() {
                                                         children: "Datum:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 654,
-                                                        columnNumber: 21
+                                                        lineNumber: 864,
+                                                        columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "font-medium",
                                                         children: currentPendingCase.date || "Nicht angegeben"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 655,
-                                                        columnNumber: 21
+                                                        lineNumber: 865,
+                                                        columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 653,
-                                                columnNumber: 19
+                                                lineNumber: 863,
+                                                columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "flex justify-between text-sm",
@@ -1379,8 +1587,8 @@ function VerwaltungPage() {
                                                         children: "Betrag:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 658,
-                                                        columnNumber: 21
+                                                        lineNumber: 868,
+                                                        columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         className: "font-medium text-green-600",
@@ -1391,14 +1599,14 @@ function VerwaltungPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 659,
-                                                        columnNumber: 21
+                                                        lineNumber: 869,
+                                                        columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 657,
-                                                columnNumber: 19
+                                                lineNumber: 867,
+                                                columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "text-sm",
@@ -1408,22 +1616,22 @@ function VerwaltungPage() {
                                                         children: "Auftraggeber:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 664,
-                                                        columnNumber: 21
+                                                        lineNumber: 874,
+                                                        columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "font-medium mt-1",
                                                         children: currentPendingCase.auftraggeber
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 665,
-                                                        columnNumber: 21
+                                                        lineNumber: 875,
+                                                        columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 663,
-                                                columnNumber: 19
+                                                lineNumber: 873,
+                                                columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "text-sm",
@@ -1433,22 +1641,22 @@ function VerwaltungPage() {
                                                         children: "Verwendungszweck:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 668,
-                                                        columnNumber: 21
+                                                        lineNumber: 878,
+                                                        columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "font-medium mt-1",
                                                         children: currentPendingCase.referenceSection
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 669,
-                                                        columnNumber: 21
+                                                        lineNumber: 879,
+                                                        columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 667,
-                                                columnNumber: 19
+                                                lineNumber: 877,
+                                                columnNumber: 23
                                             }, this),
                                             currentPendingCase.extractedMemberIds.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "text-sm",
@@ -1458,30 +1666,30 @@ function VerwaltungPage() {
                                                         children: "Gefundene IDs:"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 673,
-                                                        columnNumber: 23
+                                                        lineNumber: 883,
+                                                        columnNumber: 27
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                         className: "font-medium mt-1",
                                                         children: currentPendingCase.extractedMemberIds.join(", ")
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 674,
-                                                        columnNumber: 23
+                                                        lineNumber: 884,
+                                                        columnNumber: 27
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 672,
-                                                columnNumber: 21
+                                                lineNumber: 882,
+                                                columnNumber: 25
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 652,
-                                        columnNumber: 17
+                                        lineNumber: 862,
+                                        columnNumber: 21
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    !isSplitMode ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "space-y-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1489,8 +1697,8 @@ function VerwaltungPage() {
                                                 children: "Benutzer zuordnen"
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 681,
-                                                columnNumber: 19
+                                                lineNumber: 893,
+                                                columnNumber: 25
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "relative",
@@ -1504,8 +1712,8 @@ function VerwaltungPage() {
                                                                 className: "h-4 w-4 text-muted-foreground"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                lineNumber: 687,
-                                                                columnNumber: 23
+                                                                lineNumber: 899,
+                                                                columnNumber: 29
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                                                 value: pendingSearchQuery,
@@ -1521,21 +1729,21 @@ function VerwaltungPage() {
                                                                 }
                                                             }, void 0, false, {
                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                lineNumber: 688,
-                                                                columnNumber: 13
+                                                                lineNumber: 900,
+                                                                columnNumber: 29
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                                                 className: "h-4 w-4 text-muted-foreground"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                lineNumber: 701,
-                                                                columnNumber: 23
+                                                                lineNumber: 913,
+                                                                columnNumber: 29
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 683,
-                                                        columnNumber: 21
+                                                        lineNumber: 895,
+                                                        columnNumber: 27
                                                     }, this),
                                                     isPendingSearchOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-60 overflow-auto",
@@ -1553,8 +1761,8 @@ function VerwaltungPage() {
                                                                             children: user.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 718,
-                                                                            columnNumber: 29
+                                                                            lineNumber: 929,
+                                                                            columnNumber: 35
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "text-xs text-muted-foreground",
@@ -1564,34 +1772,34 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 719,
-                                                                            columnNumber: 29
+                                                                            lineNumber: 930,
+                                                                            columnNumber: 35
                                                                         }, this)
                                                                     ]
                                                                 }, user.id, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 707,
-                                                                    columnNumber: 27
+                                                                    lineNumber: 919,
+                                                                    columnNumber: 33
                                                                 }, this)),
                                                             getFilteredUsers(pendingSearchQuery).length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "px-3 py-2 text-muted-foreground text-sm",
                                                                 children: "Keine Benutzer gefunden"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                lineNumber: 723,
-                                                                columnNumber: 27
+                                                                lineNumber: 934,
+                                                                columnNumber: 33
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 705,
-                                                        columnNumber: 23
+                                                        lineNumber: 917,
+                                                        columnNumber: 29
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 682,
-                                                columnNumber: 19
+                                                lineNumber: 894,
+                                                columnNumber: 25
                                             }, this),
                                             currentPendingCase.assignedUserId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-sm text-green-600",
@@ -1601,42 +1809,292 @@ function VerwaltungPage() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 732,
-                                                columnNumber: 21
+                                                lineNumber: 943,
+                                                columnNumber: 27
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 680,
-                                        columnNumber: 11
+                                        lineNumber: 892,
+                                        columnNumber: 23
+                                    }, this) : /* SPLIT MODE UI */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-3 border rounded-lg p-3 bg-muted/20",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between items-center mb-1",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                                        className: "text-sm font-medium",
+                                                        children: "Aufteilung"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                        lineNumber: 952,
+                                                        columnNumber: 27
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "text-xs text-muted-foreground",
+                                                        children: [
+                                                            "Gesamt: ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "font-bold",
+                                                                children: [
+                                                                    currentPendingCase.value,
+                                                                    " ",
+                                                                    currentPendingCase.currency
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                lineNumber: 954,
+                                                                columnNumber: 37
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                        lineNumber: 953,
+                                                        columnNumber: 27
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                lineNumber: 951,
+                                                columnNumber: 25
+                                            }, this),
+                                            splitEntries.map((entry, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex gap-2 items-start",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "flex-1 relative",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "relative",
+                                                                    children: [
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                            value: entry.searchQuery,
+                                                                            onChange: (e)=>{
+                                                                                updateSplitEntry(entry.id, {
+                                                                                    searchQuery: e.target.value,
+                                                                                    isSearchOpen: true
+                                                                                });
+                                                                            },
+                                                                            placeholder: "Benutzer suchen...",
+                                                                            className: "h-9",
+                                                                            onFocus: ()=>updateSplitEntry(entry.id, {
+                                                                                    isSearchOpen: true
+                                                                                })
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                            lineNumber: 962,
+                                                                            columnNumber: 33
+                                                                        }, this),
+                                                                        entry.userId && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "absolute right-2 top-1/2 -translate-y-1/2 text-green-600 pointer-events-none",
+                                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                                                                className: "h-4 w-4"
+                                                                            }, void 0, false, {
+                                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                                lineNumber: 976,
+                                                                                columnNumber: 37
+                                                                            }, this)
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                            lineNumber: 975,
+                                                                            columnNumber: 35
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                    lineNumber: 961,
+                                                                    columnNumber: 31
+                                                                }, this),
+                                                                entry.isSearchOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "absolute z-50 w-full mt-1 bg-popover border rounded-md shadow-lg max-h-40 overflow-auto",
+                                                                    children: [
+                                                                        getFilteredUsers(entry.searchQuery).map((user)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                className: `px-3 py-2 cursor-pointer hover:bg-accent text-sm ${entry.userId === user.id ? "bg-accent" : ""}`,
+                                                                                onClick: ()=>{
+                                                                                    updateSplitEntry(entry.id, {
+                                                                                        userId: user.id,
+                                                                                        searchQuery: `${user.name} (ID: ${user.memberId})`,
+                                                                                        isSearchOpen: false
+                                                                                    });
+                                                                                },
+                                                                                children: [
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                        className: "font-medium",
+                                                                                        children: user.name
+                                                                                    }, void 0, false, {
+                                                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                                        lineNumber: 996,
+                                                                                        columnNumber: 39
+                                                                                    }, this),
+                                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                                        className: "text-xs text-muted-foreground",
+                                                                                        children: [
+                                                                                            "ID: ",
+                                                                                            user.memberId
+                                                                                        ]
+                                                                                    }, void 0, true, {
+                                                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                                        lineNumber: 997,
+                                                                                        columnNumber: 39
+                                                                                    }, this)
+                                                                                ]
+                                                                            }, user.id, true, {
+                                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                                lineNumber: 984,
+                                                                                columnNumber: 37
+                                                                            }, this)),
+                                                                        getFilteredUsers(entry.searchQuery).length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                            className: "px-3 py-2 text-xs text-muted-foreground",
+                                                                            children: "Keine Treffer"
+                                                                        }, void 0, false, {
+                                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                            lineNumber: 1001,
+                                                                            columnNumber: 37
+                                                                        }, this)
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                    lineNumber: 982,
+                                                                    columnNumber: 33
+                                                                }, this)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                            lineNumber: 960,
+                                                            columnNumber: 29
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "w-24",
+                                                            children: [
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
+                                                                    type: "number",
+                                                                    value: entry.amount,
+                                                                    onChange: (e)=>updateSplitEntry(entry.id, {
+                                                                            amount: parseFloat(e.target.value) || 0
+                                                                        }),
+                                                                    className: "h-9",
+                                                                    min: "0",
+                                                                    step: "0.01"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                    lineNumber: 1010,
+                                                                    columnNumber: 31
+                                                                }, this),
+                                                                "                        "
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                            lineNumber: 1009,
+                                                            columnNumber: 29
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                            variant: "ghost",
+                                                            size: "icon",
+                                                            className: "h-9 w-9 text-muted-foreground hover:text-red-500",
+                                                            onClick: ()=>removeSplitEntry(entry.id),
+                                                            disabled: splitEntries.length <= 1,
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
+                                                                className: "h-4 w-4"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                lineNumber: 1026,
+                                                                columnNumber: 31
+                                                            }, this)
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                            lineNumber: 1019,
+                                                            columnNumber: 29
+                                                        }, this)
+                                                    ]
+                                                }, entry.id, true, {
+                                                    fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                    lineNumber: 959,
+                                                    columnNumber: 27
+                                                }, this)),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "flex justify-between items-center pt-2",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                        variant: "outline",
+                                                        size: "sm",
+                                                        onClick: addSplitEntry,
+                                                        className: "gap-1 h-8",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__["Plus"], {
+                                                                className: "h-3 w-3"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                lineNumber: 1033,
+                                                                columnNumber: 29
+                                                            }, this),
+                                                            " Eintrag"
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                        lineNumber: 1032,
+                                                        columnNumber: 27
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "text-sm",
+                                                        children: [
+                                                            "Summe: ",
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: Math.abs(splitEntries.reduce((s, e)=>s + e.amount, 0) - parseFloat(currentPendingCase.value?.replace(",", ".") || "0")) < 0.01 ? "text-green-600 font-bold" : "text-red-500 font-bold",
+                                                                children: [
+                                                                    splitEntries.reduce((s, e)=>s + e.amount, 0).toFixed(2),
+                                                                    "€"
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                                lineNumber: 1037,
+                                                                columnNumber: 36
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                        lineNumber: 1036,
+                                                        columnNumber: 27
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                lineNumber: 1031,
+                                                columnNumber: 25
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                        lineNumber: 950,
+                                        columnNumber: 23
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "flex gap-2 pt-2",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                                onClick: handleProcessCurrentPending,
-                                                disabled: !currentPendingCase.assignedUserId || isProcessingPending,
+                                                onClick: isSplitMode ? handleProcessSplitPending : handleProcessCurrentPending,
+                                                disabled: isProcessingPending || (isSplitMode ? false : !currentPendingCase.assignedUserId),
                                                 className: "flex-1 h-12 gap-2",
                                                 children: [
                                                     isProcessingPending ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
                                                         className: "h-4 w-4 animate-spin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 746,
-                                                        columnNumber: 23
+                                                        lineNumber: 1057,
+                                                        columnNumber: 27
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
                                                         className: "h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 748,
-                                                        columnNumber: 23
+                                                        lineNumber: 1059,
+                                                        columnNumber: 27
                                                     }, this),
                                                     "Verarbeiten"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 740,
-                                                columnNumber: 19
+                                                lineNumber: 1051,
+                                                columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                 onClick: handleSkipCurrentPending,
@@ -1648,34 +2106,34 @@ function VerwaltungPage() {
                                                         className: "h-4 w-4"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 758,
-                                                        columnNumber: 21
+                                                        lineNumber: 1069,
+                                                        columnNumber: 25
                                                     }, this),
                                                     "Überspringen"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 752,
-                                                columnNumber: 19
+                                                lineNumber: 1063,
+                                                columnNumber: 23
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 739,
-                                        columnNumber: 17
+                                        lineNumber: 1050,
+                                        columnNumber: 21
                                     }, this)
                                 ]
                             }, void 0, true)
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 643,
-                            columnNumber: 9
+                            lineNumber: 853,
+                            columnNumber: 15
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 631,
-                    columnNumber: 7
+                    lineNumber: 828,
+                    columnNumber: 13
                 }, this)
             }, void 0, false) : /* History View */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "space-y-6",
@@ -1686,17 +2144,17 @@ function VerwaltungPage() {
                             className: "h-8 w-8 animate-spin text-muted-foreground"
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 774,
+                            lineNumber: 1085,
                             columnNumber: 17
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 773,
+                        lineNumber: 1084,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 772,
+                    lineNumber: 1083,
                     columnNumber: 13
                 }, this) : csvUploads.length === 0 && historyItems.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
                     className: "border-dashed",
@@ -1707,7 +2165,7 @@ function VerwaltungPage() {
                                 className: "h-12 w-12 mx-auto mb-4 opacity-50"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 780,
+                                lineNumber: 1091,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1715,7 +2173,7 @@ function VerwaltungPage() {
                                 children: "Noch keine verarbeiteten Transaktionen"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 781,
+                                lineNumber: 1092,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1723,18 +2181,18 @@ function VerwaltungPage() {
                                 children: "Laden Sie einen Kontoauszug hoch, um Transaktionen zu verarbeiten"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 782,
+                                lineNumber: 1093,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                        lineNumber: 779,
+                        lineNumber: 1090,
                         columnNumber: 15
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 778,
+                    lineNumber: 1089,
                     columnNumber: 13
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "space-y-6",
@@ -1749,7 +2207,7 @@ function VerwaltungPage() {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 793,
+                                            lineNumber: 1104,
                                             columnNumber: 21
                                         }, this),
                                         "CSV Uploads (",
@@ -1758,7 +2216,7 @@ function VerwaltungPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 792,
+                                    lineNumber: 1103,
                                     columnNumber: 19
                                 }, this),
                                 csvUploads.map((upload)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Card"], {
@@ -1776,7 +2234,7 @@ function VerwaltungPage() {
                                                                     children: upload.filename || "Unbenannte Datei"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 801,
+                                                                    lineNumber: 1112,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1794,7 +2252,7 @@ function VerwaltungPage() {
                                                                             })
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 805,
+                                                                            lineNumber: 1116,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1806,7 +2264,7 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 814,
+                                                                            lineNumber: 1125,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1818,7 +2276,7 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 817,
+                                                                            lineNumber: 1128,
                                                                             columnNumber: 31
                                                                         }, this),
                                                                         upload.manual_review_count > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -1830,19 +2288,19 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 821,
+                                                                            lineNumber: 1132,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 804,
+                                                                    lineNumber: 1115,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 800,
+                                                            lineNumber: 1111,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1856,7 +2314,7 @@ function VerwaltungPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 828,
+                                                                    lineNumber: 1139,
                                                                     columnNumber: 29
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1868,24 +2326,24 @@ function VerwaltungPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 831,
+                                                                    lineNumber: 1142,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 827,
+                                                            lineNumber: 1138,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 799,
+                                                    lineNumber: 1110,
                                                     columnNumber: 25
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 798,
+                                                lineNumber: 1109,
                                                 columnNumber: 23
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -1907,7 +2365,7 @@ function VerwaltungPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                                lineNumber: 844,
+                                                                                lineNumber: 1155,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1915,7 +2373,7 @@ function VerwaltungPage() {
                                                                                 children: transaction.description
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                                lineNumber: 848,
+                                                                                lineNumber: 1159,
                                                                                 columnNumber: 37
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1927,13 +2385,13 @@ function VerwaltungPage() {
                                                                                 })
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                                lineNumber: 851,
+                                                                                lineNumber: 1162,
                                                                                 columnNumber: 37
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                        lineNumber: 843,
+                                                                        lineNumber: 1154,
                                                                         columnNumber: 35
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1947,52 +2405,52 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 860,
+                                                                            lineNumber: 1171,
                                                                             columnNumber: 37
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                        lineNumber: 859,
+                                                                        lineNumber: 1170,
                                                                         columnNumber: 35
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                lineNumber: 842,
+                                                                lineNumber: 1153,
                                                                 columnNumber: 33
                                                             }, this)
                                                         }, transaction.id, false, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 841,
+                                                            lineNumber: 1152,
                                                             columnNumber: 31
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 839,
+                                                    lineNumber: 1150,
                                                     columnNumber: 27
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                     className: "text-sm text-muted-foreground text-center p-4",
                                                     children: "Keine Transaktionen in dieser Datei"
                                                 }, void 0, false, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 869,
+                                                    lineNumber: 1180,
                                                     columnNumber: 27
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 837,
+                                                lineNumber: 1148,
                                                 columnNumber: 23
                                             }, this)
                                         ]
                                     }, upload.id, true, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 797,
+                                        lineNumber: 1108,
                                         columnNumber: 21
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 791,
+                            lineNumber: 1102,
                             columnNumber: 17
                         }, this),
                         historyItems.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2005,7 +2463,7 @@ function VerwaltungPage() {
                                             className: "h-5 w-5"
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 883,
+                                            lineNumber: 1194,
                                             columnNumber: 21
                                         }, this),
                                         "Manuelle Überprüfungen (",
@@ -2014,7 +2472,7 @@ function VerwaltungPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 882,
+                                    lineNumber: 1193,
                                     columnNumber: 19
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2047,7 +2505,7 @@ function VerwaltungPage() {
                                                                                     })
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                                    lineNumber: 895,
+                                                                                    lineNumber: 1206,
                                                                                     columnNumber: 35
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2056,13 +2514,13 @@ function VerwaltungPage() {
                                                                                     children: getStatusExplanation(item.status)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                                    lineNumber: 904,
+                                                                                    lineNumber: 1215,
                                                                                     columnNumber: 35
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 894,
+                                                                            lineNumber: 1205,
                                                                             columnNumber: 33
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2070,13 +2528,13 @@ function VerwaltungPage() {
                                                                             children: item.auftraggeber
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 908,
+                                                                            lineNumber: 1219,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 893,
+                                                                    lineNumber: 1204,
                                                                     columnNumber: 31
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2091,7 +2549,7 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 911,
+                                                                            lineNumber: 1222,
                                                                             columnNumber: 33
                                                                         }, this),
                                                                         item.transaction && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2103,19 +2561,19 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 915,
+                                                                            lineNumber: 1226,
                                                                             columnNumber: 35
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 910,
+                                                                    lineNumber: 1221,
                                                                     columnNumber: 31
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 892,
+                                                            lineNumber: 1203,
                                                             columnNumber: 29
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2128,7 +2586,7 @@ function VerwaltungPage() {
                                                                             children: "Verwendungszweck:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 925,
+                                                                            lineNumber: 1236,
                                                                             columnNumber: 33
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2136,13 +2594,13 @@ function VerwaltungPage() {
                                                                             children: item.reference_section || "N/A"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 926,
+                                                                            lineNumber: 1237,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 924,
+                                                                    lineNumber: 1235,
                                                                     columnNumber: 31
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2152,7 +2610,7 @@ function VerwaltungPage() {
                                                                             children: "Zugeordnet:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 929,
+                                                                            lineNumber: 1240,
                                                                             columnNumber: 33
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2163,13 +2621,13 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 930,
+                                                                            lineNumber: 1241,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 928,
+                                                                    lineNumber: 1239,
                                                                     columnNumber: 31
                                                                 }, this),
                                                                 item.extracted_member_ids && item.extracted_member_ids.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2179,7 +2637,7 @@ function VerwaltungPage() {
                                                                             children: "Gefundene IDs:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 937,
+                                                                            lineNumber: 1248,
                                                                             columnNumber: 35
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2187,13 +2645,13 @@ function VerwaltungPage() {
                                                                             children: item.extracted_member_ids.join(", ")
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 938,
+                                                                            lineNumber: 1249,
                                                                             columnNumber: 35
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 936,
+                                                                    lineNumber: 1247,
                                                                     columnNumber: 33
                                                                 }, this),
                                                                 item.transaction && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2203,7 +2661,7 @@ function VerwaltungPage() {
                                                                             children: "Transaktions-ID:"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 943,
+                                                                            lineNumber: 1254,
                                                                             columnNumber: 35
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2214,19 +2672,19 @@ function VerwaltungPage() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                            lineNumber: 944,
+                                                                            lineNumber: 1255,
                                                                             columnNumber: 35
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 942,
+                                                                    lineNumber: 1253,
                                                                     columnNumber: 33
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 923,
+                                                            lineNumber: 1234,
                                                             columnNumber: 29
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("details", {
@@ -2237,7 +2695,7 @@ function VerwaltungPage() {
                                                                     children: "Original-Informationen anzeigen"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 951,
+                                                                    lineNumber: 1262,
                                                                     columnNumber: 31
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2245,51 +2703,51 @@ function VerwaltungPage() {
                                                                     children: item.info
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 954,
+                                                                    lineNumber: 1265,
                                                                     columnNumber: 31
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 950,
+                                                            lineNumber: 1261,
                                                             columnNumber: 29
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 890,
+                                                    lineNumber: 1201,
                                                     columnNumber: 27
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                lineNumber: 889,
+                                                lineNumber: 1200,
                                                 columnNumber: 25
                                             }, this)
                                         }, item.id, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 888,
+                                            lineNumber: 1199,
                                             columnNumber: 23
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 886,
+                                    lineNumber: 1197,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 881,
+                            lineNumber: 1192,
                             columnNumber: 17
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 788,
+                    lineNumber: 1099,
                     columnNumber: 13
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                lineNumber: 770,
+                lineNumber: 1081,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -2304,20 +2762,20 @@ function VerwaltungPage() {
                                     children: "Kontoauszug hochladen"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 974,
+                                    lineNumber: 1285,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
                                     children: "Wählen Sie eine CSV-Datei mit den Spalten: date, info"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 975,
+                                    lineNumber: 1286,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 973,
+                            lineNumber: 1284,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2329,7 +2787,7 @@ function VerwaltungPage() {
                                         className: "h-10 w-10 mx-auto mb-4 text-muted-foreground"
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 981,
+                                        lineNumber: 1292,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2337,7 +2795,7 @@ function VerwaltungPage() {
                                         children: "CSV-Datei hier ablegen oder klicken zum Auswählen"
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 982,
+                                        lineNumber: 1293,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2349,7 +2807,7 @@ function VerwaltungPage() {
                                         id: "csv-upload"
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 985,
+                                        lineNumber: 1296,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2364,7 +2822,7 @@ function VerwaltungPage() {
                                                         className: "mr-2 h-4 w-4 animate-spin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                        lineNumber: 997,
+                                                        lineNumber: 1308,
                                                         columnNumber: 23
                                                     }, this),
                                                     "Verarbeite..."
@@ -2372,34 +2830,34 @@ function VerwaltungPage() {
                                             }, void 0, true) : "Datei auswählen"
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 994,
+                                            lineNumber: 1305,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                        lineNumber: 993,
+                                        lineNumber: 1304,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 980,
+                                lineNumber: 1291,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 979,
+                            lineNumber: 1290,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 972,
+                    lineNumber: 1283,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                lineNumber: 971,
+                lineNumber: 1282,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
@@ -2414,7 +2872,7 @@ function VerwaltungPage() {
                                     children: "Überprüfung der Transaktionen"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1014,
+                                    lineNumber: 1325,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["DialogDescription"], {
@@ -2426,13 +2884,13 @@ function VerwaltungPage() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1015,
+                                    lineNumber: 1326,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 1013,
+                            lineNumber: 1324,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2448,7 +2906,7 @@ function VerwaltungPage() {
                                                     className: "h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 1025,
+                                                    lineNumber: 1336,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Automatisch zugeordnet (",
@@ -2457,7 +2915,7 @@ function VerwaltungPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1024,
+                                            lineNumber: 1335,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2473,7 +2931,7 @@ function VerwaltungPage() {
                                                                     children: row.auftraggeber
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 1032,
+                                                                    lineNumber: 1343,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2485,13 +2943,13 @@ function VerwaltungPage() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 1033,
+                                                                    lineNumber: 1344,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 1031,
+                                                            lineNumber: 1342,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2499,24 +2957,24 @@ function VerwaltungPage() {
                                                             children: row.referenceSection
                                                         }, void 0, false, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 1035,
+                                                            lineNumber: 1346,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, idx, true, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 1030,
+                                                    lineNumber: 1341,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1028,
+                                            lineNumber: 1339,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1023,
+                                    lineNumber: 1334,
                                     columnNumber: 15
                                 }, this),
                                 getManualReviewRows().length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2529,7 +2987,7 @@ function VerwaltungPage() {
                                                     className: "h-5 w-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 1046,
+                                                    lineNumber: 1357,
                                                     columnNumber: 19
                                                 }, this),
                                                 "Manuelle Überprüfung erforderlich (",
@@ -2538,7 +2996,7 @@ function VerwaltungPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1045,
+                                            lineNumber: 1356,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2546,7 +3004,7 @@ function VerwaltungPage() {
                                             children: "Diese Transaktionen werden zur späteren Bearbeitung gespeichert."
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1049,
+                                            lineNumber: 1360,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2562,7 +3020,7 @@ function VerwaltungPage() {
                                                                     children: row.auftraggeber
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 1056,
+                                                                    lineNumber: 1367,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2571,13 +3029,13 @@ function VerwaltungPage() {
                                                                     children: getStatusExplanation(row.status)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                                    lineNumber: 1057,
+                                                                    lineNumber: 1368,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 1055,
+                                                            lineNumber: 1366,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2585,30 +3043,30 @@ function VerwaltungPage() {
                                                             children: row.referenceSection
                                                         }, void 0, false, {
                                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                            lineNumber: 1061,
+                                                            lineNumber: 1372,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, idx, true, {
                                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                                    lineNumber: 1054,
+                                                    lineNumber: 1365,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1052,
+                                            lineNumber: 1363,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1044,
+                                    lineNumber: 1355,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 1020,
+                            lineNumber: 1331,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2621,33 +3079,45 @@ function VerwaltungPage() {
                                     children: "Abbrechen"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1070,
+                                    lineNumber: 1381,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                     onClick: handleConfirmTransactions,
                                     className: "flex-1",
-                                    children: "Bestätigen"
+                                    disabled: isConfirming,
+                                    children: isConfirming ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$loader$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Loader2$3e$__["Loader2"], {
+                                                className: "mr-2 h-4 w-4 animate-spin"
+                                            }, void 0, false, {
+                                                fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
+                                                lineNumber: 1387,
+                                                columnNumber: 19
+                                            }, this),
+                                            "Verarbeite..."
+                                        ]
+                                    }, void 0, true) : "Bestätigen"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1073,
+                                    lineNumber: 1384,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 1069,
+                            lineNumber: 1380,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 1012,
+                    lineNumber: 1323,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                lineNumber: 1011,
+                lineNumber: 1322,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialog"], {
@@ -2661,7 +3131,7 @@ function VerwaltungPage() {
                                     children: "Transaktionen verarbeitet"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1084,
+                                    lineNumber: 1402,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogDescription"], {
@@ -2675,19 +3145,19 @@ function VerwaltungPage() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                            lineNumber: 1088,
+                                            lineNumber: 1406,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                    lineNumber: 1085,
+                                    lineNumber: 1403,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 1083,
+                            lineNumber: 1401,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$alert$2d$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AlertDialogFooter"], {
@@ -2695,33 +3165,33 @@ function VerwaltungPage() {
                                 children: "OK"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                                lineNumber: 1095,
+                                lineNumber: 1413,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                            lineNumber: 1094,
+                            lineNumber: 1412,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                    lineNumber: 1082,
+                    lineNumber: 1400,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-                lineNumber: 1081,
+                lineNumber: 1399,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/repos/tdfund final/td-fund/app/dashboard/admin/verwaltung/page.tsx",
-        lineNumber: 570,
+        lineNumber: 767,
         columnNumber: 5
     }, this);
 }
-_s(VerwaltungPage, "o4R2V8tUgAA2/SFMnlhCF5hsu/Y=");
+_s(VerwaltungPage, "XgsaIAoRVYioq4+nDmXwxDichUQ=");
 _c = VerwaltungPage;
 var _c;
 __turbopack_context__.k.register(_c, "VerwaltungPage");
