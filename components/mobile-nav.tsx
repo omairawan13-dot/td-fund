@@ -3,12 +3,19 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Home, Newspaper, User, FileText, Users, Settings, LogOut } from "lucide-react"
+import { Home, Newspaper, User, FileText, Users, Settings, LogOut, MessageCircle, type LucideIcon } from "lucide-react"
 import { useAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getUnsolvedNotificationsByType } from "@/lib/mock-data"
-import { getPendingReviews, getInactiveUsers90Days, getUsersWithAnyNegativeBalance } from "@/lib/api"
+import { getPendingReviews, getInactiveUsers90Days } from "@/lib/api"
 import { Badge } from "@/components/ui/badge"
+
+type NavItem = {
+  href: string
+  icon: LucideIcon
+  label: string
+  action?: "logout"
+}
 
 export function MobileNav() {
   const pathname = usePathname()
@@ -58,16 +65,18 @@ export function MobileNav() {
 
   if (!user) return null
 
-  const userNavItems = [
+  const userNavItems: NavItem[] = [
     { href: "/dashboard", icon: Home, label: "Home" },
     { href: "/dashboard/news", icon: Newspaper, label: "News" },
+    { href: "/dashboard/chat", icon: MessageCircle, label: "Chat" },
     { href: "/dashboard/profile", icon: User, label: "Profil" },
   ]
 
-  const adminNavItems = [
+  const adminNavItems: NavItem[] = [
     { href: "/dashboard/admin/news", icon: Newspaper, label: "News" },
     { href: "/dashboard/admin/cases", icon: FileText, label: "Cases" },
     { href: "/dashboard/admin/verwaltung", icon: Settings, label: "Verwaltung" },
+    { href: "/dashboard/admin/chats", icon: MessageCircle, label: "Chats" },
     { href: "/dashboard/admin/members", icon: Users, label: "Members" },
     { href: "#", icon: LogOut, label: "Abmelden", action: "logout" },
   ]

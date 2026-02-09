@@ -659,6 +659,8 @@ __turbopack_context__.s([
     ()=>deletePendingReview,
     "deleteUserImage",
     ()=>deleteUserImage,
+    "getAdminChatThreads",
+    ()=>getAdminChatThreads,
     "getBalanceErrors",
     ()=>getBalanceErrors,
     "getBulkMemberImports",
@@ -667,12 +669,16 @@ __turbopack_context__.s([
     ()=>getCSVUploads,
     "getCases",
     ()=>getCases,
+    "getChatMessages",
+    ()=>getChatMessages,
     "getEmailHistory",
     ()=>getEmailHistory,
     "getInactiveUsers90Days",
     ()=>getInactiveUsers90Days,
     "getNewsPosts",
     ()=>getNewsPosts,
+    "getOrCreateUserChatThread",
+    ()=>getOrCreateUserChatThread,
     "getPendingReviews",
     ()=>getPendingReviews,
     "getPendingUsers",
@@ -695,6 +701,8 @@ __turbopack_context__.s([
     ()=>getUsersWithAnyNegativeBalance,
     "getUsersWithNegativeBalance",
     ()=>getUsersWithNegativeBalance,
+    "markChatAsRead",
+    ()=>markChatAsRead,
     "markNotificationAsRead",
     ()=>markNotificationAsRead,
     "markUsersInactiveAfter90Days",
@@ -711,6 +719,8 @@ __turbopack_context__.s([
     ()=>revertProfileChange,
     "saveProcessedReviewToHistory",
     ()=>saveProcessedReviewToHistory,
+    "sendChatMessage",
+    ()=>sendChatMessage,
     "sendManualReminderEmail",
     ()=>sendManualReminderEmail,
     "updateBulkMemberImport",
@@ -1839,6 +1849,201 @@ async function createUserNotification(userId, type, title, message, relatedId) {
     }
     return data.id;
 }
+const NO_ROWS_ERROR_CODE = "PGRST116";
+async function buildChatThreadsWithMetadata(rawThreads) {
+    if (!rawThreads || rawThreads.length === 0) {
+        return [];
+    }
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const userIds = [
+        ...new Set(rawThreads.map((thread)=>thread.user_id).filter(Boolean))
+    ];
+    const threadIds = rawThreads.map((thread)=>thread.id);
+    const usersById = new Map();
+    if (userIds.length > 0) {
+        const { data: userRows, error: usersError } = await supabase.from("users").select("id, name, email, member_id").in("id", userIds);
+        if (usersError) {
+            console.error("Error loading chat users:", usersError);
+        } else {
+            for (const user of userRows || []){
+                usersById.set(user.id, {
+                    id: user.id,
+                    name: user.name || "Unbekannt",
+                    email: user.email || "",
+                    member_id: user.member_id ?? undefined
+                });
+            }
+        }
+    }
+    const messagesByThread = new Map();
+    if (threadIds.length > 0) {
+        const { data: messageRows, error: messagesError } = await supabase.from("chat_messages").select("id, thread_id, sender_id, message, created_at").in("thread_id", threadIds).order("created_at", {
+            ascending: false
+        });
+        if (messagesError) {
+            console.error("Error loading chat messages for thread metadata:", messagesError);
+        } else {
+            for (const message of messageRows || []){
+                const bucket = messagesByThread.get(message.thread_id) || [];
+                bucket.push(message);
+                messagesByThread.set(message.thread_id, bucket);
+            }
+        }
+    }
+    return rawThreads.map((thread)=>{
+        const threadMessages = messagesByThread.get(thread.id) || [];
+        const latestMessage = threadMessages[0];
+        const adminReadAt = thread.admin_last_read_at ? new Date(thread.admin_last_read_at).getTime() : 0;
+        const userReadAt = thread.user_last_read_at ? new Date(thread.user_last_read_at).getTime() : 0;
+        let unreadForAdmin = 0;
+        let unreadForUser = 0;
+        for (const message of threadMessages){
+            const messageTs = new Date(message.created_at).getTime();
+            if (message.sender_id === thread.user_id && messageTs > adminReadAt) {
+                unreadForAdmin += 1;
+            }
+            if (message.sender_id !== thread.user_id && messageTs > userReadAt) {
+                unreadForUser += 1;
+            }
+        }
+        return {
+            id: thread.id,
+            user_id: thread.user_id,
+            status: thread.status,
+            created_at: thread.created_at,
+            updated_at: thread.updated_at,
+            last_message_at: thread.last_message_at || undefined,
+            user_last_read_at: thread.user_last_read_at || undefined,
+            admin_last_read_at: thread.admin_last_read_at || undefined,
+            user: usersById.get(thread.user_id),
+            last_message_preview: latestMessage?.message || undefined,
+            unread_for_admin: unreadForAdmin,
+            unread_for_user: unreadForUser
+        };
+    });
+}
+async function getOrCreateUserChatThread(userId) {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const { data: existingThread, error: existingError } = await supabase.from("chat_threads").select("*").eq("user_id", userId).single();
+    if (existingError && existingError.code !== NO_ROWS_ERROR_CODE) {
+        console.error("Error fetching user chat thread:", existingError);
+        return null;
+    }
+    if (existingThread) {
+        const threads = await buildChatThreadsWithMetadata([
+            existingThread
+        ]);
+        return threads[0] || null;
+    }
+    const now = new Date().toISOString();
+    const { data: createdThread, error: createError } = await supabase.from("chat_threads").insert({
+        user_id: userId,
+        status: "OPEN",
+        created_at: now,
+        updated_at: now,
+        user_last_read_at: now
+    }).select("*").single();
+    if (createError || !createdThread) {
+        console.error("Error creating user chat thread:", createError);
+        return null;
+    }
+    const threads = await buildChatThreadsWithMetadata([
+        createdThread
+    ]);
+    return threads[0] || null;
+}
+async function getAdminChatThreads() {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const { data, error } = await supabase.from("chat_threads").select("*").order("last_message_at", {
+        ascending: false,
+        nullsFirst: false
+    }).order("created_at", {
+        ascending: false
+    });
+    if (error) {
+        console.error("Error fetching admin chat threads:", error);
+        return [];
+    }
+    return buildChatThreadsWithMetadata(data || []);
+}
+async function getChatMessages(threadId) {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const { data, error } = await supabase.from("chat_messages").select("*").eq("thread_id", threadId).order("created_at", {
+        ascending: true
+    });
+    if (error) {
+        console.error("Error fetching chat messages:", error);
+        return [];
+    }
+    const senderIds = [
+        ...new Set((data || []).map((message)=>message.sender_id).filter(Boolean))
+    ];
+    const sendersById = new Map();
+    if (senderIds.length > 0) {
+        const { data: senderRows, error: senderError } = await supabase.from("users").select("id, name, role").in("id", senderIds);
+        if (senderError) {
+            console.error("Error fetching chat message senders:", senderError);
+        } else {
+            for (const sender of senderRows || []){
+                sendersById.set(sender.id, {
+                    id: sender.id,
+                    name: sender.name || "Unbekannt",
+                    role: sender.role || "USER"
+                });
+            }
+        }
+    }
+    return (data || []).map((message)=>({
+            id: message.id,
+            thread_id: message.thread_id,
+            sender_id: message.sender_id,
+            message: message.message,
+            created_at: message.created_at,
+            sender: sendersById.get(message.sender_id)
+        }));
+}
+async function sendChatMessage(threadId, senderId, message) {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const cleanMessage = message.trim();
+    if (!cleanMessage) return false;
+    const now = new Date().toISOString();
+    const { error: insertError } = await supabase.from("chat_messages").insert({
+        thread_id: threadId,
+        sender_id: senderId,
+        message: cleanMessage,
+        created_at: now
+    });
+    if (insertError) {
+        console.error("Error sending chat message:", insertError);
+        return false;
+    }
+    const { error: threadError } = await supabase.from("chat_threads").update({
+        last_message_at: now,
+        updated_at: now
+    }).eq("id", threadId);
+    if (threadError) {
+        console.error("Error updating chat thread after sending message:", threadError);
+        return false;
+    }
+    return true;
+}
+async function markChatAsRead(threadId, role) {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
+    const now = new Date().toISOString();
+    const updates = role === "ADMIN" ? {
+        admin_last_read_at: now,
+        updated_at: now
+    } : {
+        user_last_read_at: now,
+        updated_at: now
+    };
+    const { error } = await supabase.from("chat_threads").update(updates).eq("id", threadId);
+    if (error) {
+        console.error("Error marking chat as read:", error);
+        return false;
+    }
+    return true;
+}
 async function addBulkMemberImports(imports) {
     const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
     // Get current user (admin)
@@ -2020,6 +2225,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/users.js [app-client] (ecmascript) <export default as Users>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$settings$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Settings$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/settings.js [app-client] (ecmascript) <export default as Settings>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$log$2d$out$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LogOut$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/log-out.js [app-client] (ecmascript) <export default as LogOut>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/node_modules/.pnpm/lucide-react@0.562.0_react@19.2.3/node_modules/lucide-react/dist/esm/icons/message-circle.js [app-client] (ecmascript) <export default as MessageCircle>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/lib/auth.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/lib/utils.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/repos/tdfund final/td-fund/lib/mock-data.ts [app-client] (ecmascript)");
@@ -2104,6 +2310,11 @@ function MobileNav() {
             label: "News"
         },
         {
+            href: "/dashboard/chat",
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"],
+            label: "Chat"
+        },
+        {
             href: "/dashboard/profile",
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$user$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__User$3e$__["User"],
             label: "Profil"
@@ -2124,6 +2335,11 @@ function MobileNav() {
             href: "/dashboard/admin/verwaltung",
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$settings$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Settings$3e$__["Settings"],
             label: "Verwaltung"
+        },
+        {
+            href: "/dashboard/admin/chats",
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$lucide$2d$react$40$0$2e$562$2e$0_react$40$19$2e$2$2e$3$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"],
+            label: "Chats"
         },
         {
             href: "/dashboard/admin/members",
@@ -2154,7 +2370,7 @@ function MobileNav() {
                                 className: "h-5 w-5"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                lineNumber: 91,
+                                lineNumber: 100,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2162,13 +2378,13 @@ function MobileNav() {
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                lineNumber: 92,
+                                lineNumber: 101,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, "logout", true, {
                         fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                        lineNumber: 86,
+                        lineNumber: 95,
                         columnNumber: 15
                     }, this);
                 }
@@ -2189,7 +2405,7 @@ function MobileNav() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 114,
+                                    lineNumber: 123,
                                     columnNumber: 17
                                 }, this),
                                 showNewsBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2198,7 +2414,7 @@ function MobileNav() {
                                     children: notificationCount > 9 ? "9+" : notificationCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 116,
+                                    lineNumber: 125,
                                     columnNumber: 19
                                 }, this),
                                 showVerwaltungBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2207,7 +2423,7 @@ function MobileNav() {
                                     children: pendingReviewsCount > 9 ? "9+" : pendingReviewsCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 124,
+                                    lineNumber: 133,
                                     columnNumber: 19
                                 }, this),
                                 showMembersBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2216,13 +2432,13 @@ function MobileNav() {
                                     children: inactiveUsersCount > 9 ? "9+" : inactiveUsersCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 132,
+                                    lineNumber: 141,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                            lineNumber: 113,
+                            lineNumber: 122,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2230,24 +2446,24 @@ function MobileNav() {
                             children: item.label
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                            lineNumber: 140,
+                            lineNumber: 149,
                             columnNumber: 15
                         }, this)
                     ]
                 }, item.href, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                    lineNumber: 105,
+                    lineNumber: 114,
                     columnNumber: 13
                 }, this);
             })
         }, void 0, false, {
             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-            lineNumber: 79,
+            lineNumber: 88,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-        lineNumber: 78,
+        lineNumber: 87,
         columnNumber: 5
     }, this);
 }

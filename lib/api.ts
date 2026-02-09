@@ -1692,6 +1692,305 @@ export async function createUserNotification(
 }
 
 // ============================================
+// CHAT API
+// ============================================
+
+export interface ChatThread {
+  id: string
+  user_id: string
+  status: "OPEN" | "CLOSED"
+  created_at: string
+  updated_at: string
+  last_message_at?: string
+  user_last_read_at?: string
+  admin_last_read_at?: string
+  user?: {
+    id: string
+    name: string
+    email: string
+    member_id?: number
+  }
+  last_message_preview?: string
+  unread_for_admin: number
+  unread_for_user: number
+}
+
+export interface ChatMessage {
+  id: string
+  thread_id: string
+  sender_id: string
+  message: string
+  created_at: string
+  sender?: {
+    id: string
+    name: string
+    role: "USER" | "ADMIN"
+  }
+}
+
+const NO_ROWS_ERROR_CODE = "PGRST116"
+
+async function buildChatThreadsWithMetadata(rawThreads: any[]): Promise<ChatThread[]> {
+  if (!rawThreads || rawThreads.length === 0) {
+    return []
+  }
+
+  const supabase = createClient()
+
+  const userIds = [...new Set(rawThreads.map((thread) => thread.user_id).filter(Boolean))]
+  const threadIds = rawThreads.map((thread) => thread.id)
+
+  const usersById = new Map<string, { id: string; name: string; email: string; member_id?: number }>()
+  if (userIds.length > 0) {
+    const { data: userRows, error: usersError } = await supabase
+      .from("users")
+      .select("id, name, email, member_id")
+      .in("id", userIds)
+
+    if (usersError) {
+      console.error("Error loading chat users:", usersError)
+    } else {
+      for (const user of userRows || []) {
+        usersById.set(user.id, {
+          id: user.id,
+          name: user.name || "Unbekannt",
+          email: user.email || "",
+          member_id: user.member_id ?? undefined,
+        })
+      }
+    }
+  }
+
+  const messagesByThread = new Map<string, any[]>()
+  if (threadIds.length > 0) {
+    const { data: messageRows, error: messagesError } = await supabase
+      .from("chat_messages")
+      .select("id, thread_id, sender_id, message, created_at")
+      .in("thread_id", threadIds)
+      .order("created_at", { ascending: false })
+
+    if (messagesError) {
+      console.error("Error loading chat messages for thread metadata:", messagesError)
+    } else {
+      for (const message of messageRows || []) {
+        const bucket = messagesByThread.get(message.thread_id) || []
+        bucket.push(message)
+        messagesByThread.set(message.thread_id, bucket)
+      }
+    }
+  }
+
+  return rawThreads.map((thread) => {
+    const threadMessages = messagesByThread.get(thread.id) || []
+    const latestMessage = threadMessages[0]
+
+    const adminReadAt = thread.admin_last_read_at ? new Date(thread.admin_last_read_at).getTime() : 0
+    const userReadAt = thread.user_last_read_at ? new Date(thread.user_last_read_at).getTime() : 0
+
+    let unreadForAdmin = 0
+    let unreadForUser = 0
+
+    for (const message of threadMessages) {
+      const messageTs = new Date(message.created_at).getTime()
+
+      if (message.sender_id === thread.user_id && messageTs > adminReadAt) {
+        unreadForAdmin += 1
+      }
+
+      if (message.sender_id !== thread.user_id && messageTs > userReadAt) {
+        unreadForUser += 1
+      }
+    }
+
+    return {
+      id: thread.id,
+      user_id: thread.user_id,
+      status: thread.status,
+      created_at: thread.created_at,
+      updated_at: thread.updated_at,
+      last_message_at: thread.last_message_at || undefined,
+      user_last_read_at: thread.user_last_read_at || undefined,
+      admin_last_read_at: thread.admin_last_read_at || undefined,
+      user: usersById.get(thread.user_id),
+      last_message_preview: latestMessage?.message || undefined,
+      unread_for_admin: unreadForAdmin,
+      unread_for_user: unreadForUser,
+    }
+  })
+}
+
+export async function getOrCreateUserChatThread(userId: string): Promise<ChatThread | null> {
+  const supabase = createClient()
+
+  const { data: existingThread, error: existingError } = await supabase
+    .from("chat_threads")
+    .select("*")
+    .eq("user_id", userId)
+    .single()
+
+  if (existingError && existingError.code !== NO_ROWS_ERROR_CODE) {
+    console.error("Error fetching user chat thread:", existingError)
+    return null
+  }
+
+  if (existingThread) {
+    const threads = await buildChatThreadsWithMetadata([existingThread])
+    return threads[0] || null
+  }
+
+  const now = new Date().toISOString()
+  const { data: createdThread, error: createError } = await supabase
+    .from("chat_threads")
+    .insert({
+      user_id: userId,
+      status: "OPEN",
+      created_at: now,
+      updated_at: now,
+      user_last_read_at: now,
+    })
+    .select("*")
+    .single()
+
+  if (createError || !createdThread) {
+    console.error("Error creating user chat thread:", createError)
+    return null
+  }
+
+  const threads = await buildChatThreadsWithMetadata([createdThread])
+  return threads[0] || null
+}
+
+export async function getAdminChatThreads(): Promise<ChatThread[]> {
+  const supabase = createClient()
+
+  const { data, error } = await supabase
+    .from("chat_threads")
+    .select("*")
+    .order("last_message_at", { ascending: false, nullsFirst: false })
+    .order("created_at", { ascending: false })
+
+  if (error) {
+    console.error("Error fetching admin chat threads:", error)
+    return []
+  }
+
+  return buildChatThreadsWithMetadata(data || [])
+}
+
+export async function getChatMessages(threadId: string): Promise<ChatMessage[]> {
+  const supabase = createClient()
+
+  const { data, error } = await supabase
+    .from("chat_messages")
+    .select("*")
+    .eq("thread_id", threadId)
+    .order("created_at", { ascending: true })
+
+  if (error) {
+    console.error("Error fetching chat messages:", error)
+    return []
+  }
+
+  const senderIds = [...new Set((data || []).map((message) => message.sender_id).filter(Boolean))]
+  const sendersById = new Map<string, { id: string; name: string; role: "USER" | "ADMIN" }>()
+
+  if (senderIds.length > 0) {
+    const { data: senderRows, error: senderError } = await supabase
+      .from("users")
+      .select("id, name, role")
+      .in("id", senderIds)
+
+    if (senderError) {
+      console.error("Error fetching chat message senders:", senderError)
+    } else {
+      for (const sender of senderRows || []) {
+        sendersById.set(sender.id, {
+          id: sender.id,
+          name: sender.name || "Unbekannt",
+          role: (sender.role || "USER") as "USER" | "ADMIN",
+        })
+      }
+    }
+  }
+
+  return (data || []).map((message) => ({
+    id: message.id,
+    thread_id: message.thread_id,
+    sender_id: message.sender_id,
+    message: message.message,
+    created_at: message.created_at,
+    sender: sendersById.get(message.sender_id),
+  }))
+}
+
+export async function sendChatMessage(
+  threadId: string,
+  senderId: string,
+  message: string
+): Promise<boolean> {
+  const supabase = createClient()
+
+  const cleanMessage = message.trim()
+  if (!cleanMessage) return false
+
+  const now = new Date().toISOString()
+
+  const { error: insertError } = await supabase
+    .from("chat_messages")
+    .insert({
+      thread_id: threadId,
+      sender_id: senderId,
+      message: cleanMessage,
+      created_at: now,
+    })
+
+  if (insertError) {
+    console.error("Error sending chat message:", insertError)
+    return false
+  }
+
+  const { error: threadError } = await supabase
+    .from("chat_threads")
+    .update({
+      last_message_at: now,
+      updated_at: now,
+    })
+    .eq("id", threadId)
+
+  if (threadError) {
+    console.error("Error updating chat thread after sending message:", threadError)
+    return false
+  }
+
+  return true
+}
+
+export async function markChatAsRead(
+  threadId: string,
+  role: "USER" | "ADMIN"
+): Promise<boolean> {
+  const supabase = createClient()
+
+  const now = new Date().toISOString()
+  const updates =
+    role === "ADMIN"
+      ? { admin_last_read_at: now, updated_at: now }
+      : { user_last_read_at: now, updated_at: now }
+
+  const { error } = await supabase
+    .from("chat_threads")
+    .update(updates)
+    .eq("id", threadId)
+
+  if (error) {
+    console.error("Error marking chat as read:", error)
+    return false
+  }
+
+  return true
+}
+
+// ============================================
 // BULK MEMBER IMPORTS API
 // ============================================
 

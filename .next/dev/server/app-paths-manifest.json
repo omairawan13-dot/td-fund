@@ -1,8 +1,9 @@
 {
-  "/dashboard/admin/cases/page": "app/dashboard/admin/cases/page.js",
-  "/dashboard/admin/members/page": "app/dashboard/admin/members/page.js",
+  "/dashboard/admin/chats/page": "app/dashboard/admin/chats/page.js",
   "/dashboard/admin/news/page": "app/dashboard/admin/news/page.js",
-  "/dashboard/admin/verwaltung/page": "app/dashboard/admin/verwaltung/page.js",
+  "/dashboard/chat/page": "app/dashboard/chat/page.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/profile/page": "app/dashboard/profile/page.js",
+  "/login/page": "app/login/page.js",
   "/page": "app/page.js"
 }

@@ -71,6 +71,12 @@
       "namedRegex": "^/dashboard/admin/cases(?:/)?$"
     },
     {
+      "page": "/dashboard/admin/chats",
+      "regex": "^/dashboard/admin/chats(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/admin/chats(?:/)?$"
+    },
+    {
       "page": "/dashboard/admin/members",
       "regex": "^/dashboard/admin/members(?:/)?$",
       "routeKeys": {},
@@ -87,6 +93,12 @@
       "regex": "^/dashboard/admin/verwaltung(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/dashboard/admin/verwaltung(?:/)?$"
+    },
+    {
+      "page": "/dashboard/chat",
+      "regex": "^/dashboard/chat(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/chat(?:/)?$"
     },
     {
       "page": "/dashboard/news",

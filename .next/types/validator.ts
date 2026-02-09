@@ -56,6 +56,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../app/dashboard/admin/chats/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/dashboard/admin/chats">> = Specific
+  const handler = {} as typeof import("../../app/dashboard/admin/chats/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../app/dashboard/admin/members/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/dashboard/admin/members">> = Specific
@@ -78,6 +87,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 {
   type __IsExpected<Specific extends AppPageConfig<"/dashboard/admin/verwaltung">> = Specific
   const handler = {} as typeof import("../../app/dashboard/admin/verwaltung/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../app/dashboard/chat/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/dashboard/chat">> = Specific
+  const handler = {} as typeof import("../../app/dashboard/chat/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
