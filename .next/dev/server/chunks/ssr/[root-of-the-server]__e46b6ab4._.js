@@ -686,6 +686,8 @@ __turbopack_context__.s([
     ()=>getOrCreateUserChatThread,
     "getPendingReviews",
     ()=>getPendingReviews,
+    "getPendingReviewsCount",
+    ()=>getPendingReviewsCount,
     "getPendingUsers",
     ()=>getPendingUsers,
     "getProcessedReviewsHistory",
@@ -894,6 +896,18 @@ async function getPendingReviews() {
             createdAt: r.created_at,
             uploadedAt: r.created_at
         }));
+}
+async function getPendingReviewsCount() {
+    const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
+    const { count, error } = await supabase.from("pending_reviews").select("*", {
+        count: "exact",
+        head: true
+    });
+    if (error) {
+        console.error("Error fetching pending reviews count:", error);
+        return 0;
+    }
+    return count || 0;
 }
 async function addPendingReviews(reviews) {
     const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
@@ -1129,7 +1143,7 @@ async function uploadUserImage(userId, file) {
     const filePath = `users/${fileName}`;
     // Upload file to Supabase Storage
     const { data, error } = await supabase.storage.from('images').upload(filePath, file, {
-        cacheControl: '3600',
+        cacheControl: '31536000',
         upsert: false
     });
     if (error) {
@@ -1185,7 +1199,7 @@ async function uploadNewsBannerImage(newsId, file) {
     const filePath = `news/${fileName}`;
     // Upload file to Supabase Storage
     const { data, error } = await supabase.storage.from('images').upload(filePath, file, {
-        cacheControl: '3600',
+        cacheControl: '31536000',
         upsert: false
     });
     if (error) {
@@ -2257,23 +2271,24 @@ function MobileNav() {
                 setNotificationCount(balanceErrors.length + profileChanges.length);
             };
             const updatePendingReviews = async ()=>{
-                const pending = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getPendingReviews"])();
-                setPendingReviewsCount(pending.length);
+                const pendingCount = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getPendingReviewsCount"])();
+                setPendingReviewsCount(pendingCount);
             };
-            const updateInactiveUsers = async ()=>{
-                // Count users who have been negative for 90+ days but are NOT yet inactive
-                const inactiveUsers = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getInactiveUsers90Days"])();
-                setInactiveUsersCount(inactiveUsers.length);
+            const updateNegativeUsers = async ()=>{
+                const negativeUsersCount = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$lib$2f$api$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getUsersWithAnyNegativeBalance"])();
+                setInactiveUsersCount(negativeUsersCount);
             };
-            updateCount();
-            updatePendingReviews();
-            updateInactiveUsers();
-            // Refresh every 2 seconds
-            const interval = setInterval(()=>{
+            const runUpdateCycle = ()=>{
+                if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+                    return;
+                }
                 updateCount();
-                updatePendingReviews();
-                updateInactiveUsers();
-            }, 2000);
+                void updatePendingReviews();
+                void updateNegativeUsers();
+            };
+            runUpdateCycle();
+            // Refresh every 60 seconds to reduce egress on free plans.
+            const interval = setInterval(runUpdateCycle, 60000);
             return ()=>clearInterval(interval);
         }
     }, [
@@ -2352,7 +2367,7 @@ function MobileNav() {
                                 className: "h-5 w-5"
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                lineNumber: 100,
+                                lineNumber: 103,
                                 columnNumber: 17
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2360,13 +2375,13 @@ function MobileNav() {
                                 children: item.label
                             }, void 0, false, {
                                 fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                lineNumber: 101,
+                                lineNumber: 104,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, "logout", true, {
                         fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                        lineNumber: 95,
+                        lineNumber: 98,
                         columnNumber: 15
                     }, this);
                 }
@@ -2374,7 +2389,7 @@ function MobileNav() {
                 const showNewsBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/news" && notificationCount > 0;
                 // Show notification badge on Verwaltung item for pending manual reviews
                 const showVerwaltungBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/verwaltung" && pendingReviewsCount > 0;
-                // Show notification badge on Members item for inactive users (90+ days)
+                // Show notification badge on Members item for users with negative balance
                 const showMembersBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/members" && inactiveUsersCount > 0;
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     href: item.href,
@@ -2387,7 +2402,7 @@ function MobileNav() {
                                     className: "h-5 w-5"
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 126,
                                     columnNumber: 17
                                 }, this),
                                 showNewsBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2396,7 +2411,7 @@ function MobileNav() {
                                     children: notificationCount > 9 ? "9+" : notificationCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 125,
+                                    lineNumber: 128,
                                     columnNumber: 19
                                 }, this),
                                 showVerwaltungBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2405,7 +2420,7 @@ function MobileNav() {
                                     children: pendingReviewsCount > 9 ? "9+" : pendingReviewsCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 133,
+                                    lineNumber: 136,
                                     columnNumber: 19
                                 }, this),
                                 showMembersBadge && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Badge"], {
@@ -2414,13 +2429,13 @@ function MobileNav() {
                                     children: inactiveUsersCount > 9 ? "9+" : inactiveUsersCount
                                 }, void 0, false, {
                                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                                    lineNumber: 141,
+                                    lineNumber: 144,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                            lineNumber: 122,
+                            lineNumber: 125,
                             columnNumber: 15
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$repos$2f$tdfund__final$2f$td$2d$fund$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$1_react$2d$dom$40$19$2e$2$2e$3_react$40$19$2e$2$2e$3_$5f$react$40$19$2e$2$2e$3$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2428,24 +2443,24 @@ function MobileNav() {
                             children: item.label
                         }, void 0, false, {
                             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                            lineNumber: 149,
+                            lineNumber: 152,
                             columnNumber: 15
                         }, this)
                     ]
                 }, item.href, true, {
                     fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-                    lineNumber: 114,
+                    lineNumber: 117,
                     columnNumber: 13
                 }, this);
             })
         }, void 0, false, {
             fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-            lineNumber: 88,
+            lineNumber: 91,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/repos/tdfund final/td-fund/components/mobile-nav.tsx",
-        lineNumber: 87,
+        lineNumber: 90,
         columnNumber: 5
     }, this);
 }

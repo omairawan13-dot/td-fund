@@ -217,6 +217,21 @@ export async function getPendingReviews(): Promise<PendingManualReview[]> {
   }))
 }
 
+export async function getPendingReviewsCount(): Promise<number> {
+  const supabase = createClient()
+
+  const { count, error } = await supabase
+    .from("pending_reviews")
+    .select("*", { count: "exact", head: true })
+
+  if (error) {
+    console.error("Error fetching pending reviews count:", error)
+    return 0
+  }
+
+  return count || 0
+}
+
 export async function addPendingReviews(reviews: PendingReviewInput[]): Promise<boolean> {
   const supabase = createClient()
 
@@ -563,7 +578,7 @@ export async function uploadUserImage(userId: string, file: File): Promise<strin
   const { data, error } = await supabase.storage
     .from('images')
     .upload(filePath, file, {
-      cacheControl: '3600',
+      cacheControl: '31536000',
       upsert: false
     })
 
@@ -630,7 +645,7 @@ export async function uploadNewsBannerImage(newsId: string, file: File): Promise
   const { data, error } = await supabase.storage
     .from('images')
     .upload(filePath, file, {
-      cacheControl: '3600',
+      cacheControl: '31536000',
       upsert: false
     })
 

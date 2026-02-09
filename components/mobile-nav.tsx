@@ -7,7 +7,7 @@ import { Home, Newspaper, User, FileText, Users, Settings, LogOut, MessageCircle
 import { useAuth } from "@/lib/auth"
 import { cn } from "@/lib/utils"
 import { getUnsolvedNotificationsByType } from "@/lib/mock-data"
-import { getPendingReviews, getInactiveUsers90Days } from "@/lib/api"
+import { getPendingReviewsCount, getUsersWithAnyNegativeBalance } from "@/lib/api"
 import { Badge } from "@/components/ui/badge"
 
 type NavItem = {
@@ -39,26 +39,29 @@ export function MobileNav() {
       }
 
       const updatePendingReviews = async () => {
-        const pending = await getPendingReviews()
-        setPendingReviewsCount(pending.length)
+        const pendingCount = await getPendingReviewsCount()
+        setPendingReviewsCount(pendingCount)
       }
 
-      const updateInactiveUsers = async () => {
-        // Count users who have been negative for 90+ days but are NOT yet inactive
-        const inactiveUsers = await getInactiveUsers90Days()
-        setInactiveUsersCount(inactiveUsers.length)
+      const updateNegativeUsers = async () => {
+        const negativeUsersCount = await getUsersWithAnyNegativeBalance()
+        setInactiveUsersCount(negativeUsersCount)
       }
 
-      updateCount()
-      updatePendingReviews()
-      updateInactiveUsers()
-      
-      // Refresh every 2 seconds
-      const interval = setInterval(() => {
+      const runUpdateCycle = () => {
+        if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+          return
+        }
+
         updateCount()
-        updatePendingReviews()
-        updateInactiveUsers()
-      }, 2000)
+        void updatePendingReviews()
+        void updateNegativeUsers()
+      }
+
+      runUpdateCycle()
+
+      // Refresh every 60 seconds to reduce egress on free plans.
+      const interval = setInterval(runUpdateCycle, 60000)
       return () => clearInterval(interval)
     }
   }, [user])
@@ -107,7 +110,7 @@ export function MobileNav() {
           const showNewsBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/news" && notificationCount > 0
           // Show notification badge on Verwaltung item for pending manual reviews
           const showVerwaltungBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/verwaltung" && pendingReviewsCount > 0
-          // Show notification badge on Members item for inactive users (90+ days)
+          // Show notification badge on Members item for users with negative balance
           const showMembersBadge = user.role === "ADMIN" && item.href === "/dashboard/admin/members" && inactiveUsersCount > 0
 
           return (

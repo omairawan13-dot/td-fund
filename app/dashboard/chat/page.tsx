@@ -60,9 +60,12 @@ export default function UserChatPage() {
     if (!thread?.id) return
 
     const interval = setInterval(async () => {
+      if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+        return
+      }
       const fetchedMessages = await getChatMessages(thread.id)
       setMessages(fetchedMessages)
-    }, 5000)
+    }, 15000)
 
     return () => clearInterval(interval)
   }, [thread?.id])

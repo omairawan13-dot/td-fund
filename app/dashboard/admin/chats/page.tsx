@@ -78,12 +78,15 @@ export default function AdminChatsPage() {
     if (user?.role !== "ADMIN") return
 
     const interval = setInterval(async () => {
+      if (typeof document !== "undefined" && document.visibilityState !== "visible") {
+        return
+      }
       await loadThreads(false)
       if (selectedThreadId) {
         const fetchedMessages = await getChatMessages(selectedThreadId)
         setMessages(fetchedMessages)
       }
-    }, 5000)
+    }, 15000)
 
     return () => clearInterval(interval)
   }, [selectedThreadId, user?.role])
